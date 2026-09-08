@@ -1,0 +1,6 @@
+{
+  "name": "TerraFarm",
+  "description": "TerraSat Impact climate intelligence platform featuring Terra Farm digital MRV and NEWIS flood early warning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
