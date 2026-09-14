@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, AlertTriangle, CheckCircle, Radio, MapPin, Calendar, ArrowUpRight, Satellite } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/src/components/ui/tabs';
 
 interface PortfolioData {
   id: string;
@@ -118,12 +121,12 @@ export const MrvConsolePreview: React.FC = () => {
       {/* Top Console Navigation Bar */}
       <div className="bg-[#1D3130] border-b border-[#2B4543] px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
+          <Badge variant="default" className="flex items-center gap-2 py-1 px-3">
             <span className="w-2 h-2 rounded-full bg-[#4C8B5C] animate-pulse" />
             <span className="font-mono uppercase text-[#CFF4A7] font-semibold tracking-wider">
               MRV Console Live
             </span>
-          </div>
+          </Badge>
           <span className="hidden sm:inline text-[#2B4543]">|</span>
           <div className="hidden sm:flex items-center gap-1.5 text-[#E7EFE5]/80 font-mono">
             <Satellite className="w-3.5 h-3.5 text-[#CFF4A7]" />
@@ -131,20 +134,23 @@ export const MrvConsolePreview: React.FC = () => {
           </div>
         </div>
 
-        {/* Portfolio Tabs */}
-        <div className="flex items-center gap-1 bg-[#152522] p-1 rounded border border-[#2B4543]">
+        {/* Portfolio Tabs using shadcn Button group */}
+        <div className="flex items-center gap-1 bg-[#152522] p-1 rounded-xl border border-[#2B4543]">
           {portfolios.map((p, idx) => (
-            <button
+            <Button
               key={p.id}
+              type="button"
+              variant={selectedPortfolio === idx ? 'default' : 'ghost'}
+              size="sm"
               onClick={() => setSelectedPortfolio(idx)}
-              className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
+              className={`h-7 px-3 text-[11px] rounded-lg transition-all ${
                 selectedPortfolio === idx
-                  ? 'bg-[#2B4543] text-[#CFF4A7] font-semibold'
-                  : 'text-[#A4B8B2] hover:text-white'
+                  ? 'bg-[#CFF4A7] text-[#11201D] font-bold shadow-xs'
+                  : 'text-[#A4B8B2] hover:text-white hover:bg-[#1D3130]'
               }`}
             >
               {p.id === 'nyeri-coffee' ? 'Nyeri Coffee' : p.id === 'mt-kenya-veg' ? 'Mt. Kenya Veg' : 'Kericho Tea'}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -168,40 +174,51 @@ export const MrvConsolePreview: React.FC = () => {
 
           {/* Canvas Top Bar: Active Parcel Badge & Layer Controls */}
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
-            <div className="bg-[#152522]/90 backdrop-blur-md px-3 py-1.5 rounded border border-[#2B4543] text-xs">
-              <span className="font-mono text-[#CFF4A7] font-semibold">{current.currentParcel.code}</span>
+            <div className="bg-[#152522]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#2B4543] text-xs flex items-center">
+              <Badge variant="default" className="font-mono text-xs py-0.5 px-2">
+                {current.currentParcel.code}
+              </Badge>
               <span className="text-[#A4B8B2] mx-2">·</span>
-              <span className="text-[#E7EFE5]">{current.currentParcel.area}</span>
+              <span className="text-[#E7EFE5] font-medium">{current.currentParcel.area}</span>
               <span className="text-[#A4B8B2] mx-2">·</span>
               <span className="font-mono text-[10px] text-[#D6E3DE]">{current.currentParcel.coords}</span>
             </div>
 
             {/* Layer Toggles */}
-            <div className="flex items-center gap-1 bg-[#152522]/90 backdrop-blur-md p-1 rounded border border-[#2B4543] text-[11px]">
-              <button
+            <div className="flex items-center gap-1 bg-[#152522]/90 backdrop-blur-md p-1 rounded-xl border border-[#2B4543] text-[11px]">
+              <Button
+                type="button"
+                variant={activeLayer === 'ndvi' ? 'default' : 'ghost'}
+                size="sm"
                 onClick={() => setActiveLayer('ndvi')}
-                className={`px-2 py-0.5 rounded transition-colors ${
-                  activeLayer === 'ndvi' ? 'bg-[#CFF4A7] text-[#1D3130] font-semibold' : 'text-[#A4B8B2] hover:text-white'
+                className={`h-6 px-2.5 rounded text-[11px] ${
+                  activeLayer === 'ndvi' ? 'bg-[#CFF4A7] text-[#1D3130] font-bold' : 'text-[#A4B8B2] hover:text-white'
                 }`}
               >
                 NDVI Health
-              </button>
-              <button
+              </Button>
+              <Button
+                type="button"
+                variant={activeLayer === 'eudr' ? 'default' : 'ghost'}
+                size="sm"
                 onClick={() => setActiveLayer('eudr')}
-                className={`px-2 py-0.5 rounded transition-colors ${
-                  activeLayer === 'eudr' ? 'bg-[#CFF4A7] text-[#1D3130] font-semibold' : 'text-[#A4B8B2] hover:text-white'
+                className={`h-6 px-2.5 rounded text-[11px] ${
+                  activeLayer === 'eudr' ? 'bg-[#CFF4A7] text-[#1D3130] font-bold' : 'text-[#A4B8B2] hover:text-white'
                 }`}
               >
                 EUDR Baseline
-              </button>
-              <button
+              </Button>
+              <Button
+                type="button"
+                variant={activeLayer === 'iot' ? 'default' : 'ghost'}
+                size="sm"
                 onClick={() => setActiveLayer('iot')}
-                className={`px-2 py-0.5 rounded transition-colors ${
-                  activeLayer === 'iot' ? 'bg-[#CFF4A7] text-[#1D3130] font-semibold' : 'text-[#A4B8B2] hover:text-white'
+                className={`h-6 px-2.5 rounded text-[11px] ${
+                  activeLayer === 'iot' ? 'bg-[#CFF4A7] text-[#1D3130] font-bold' : 'text-[#A4B8B2] hover:text-white'
                 }`}
               >
                 IoT In-Situ
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -350,15 +367,15 @@ export const MrvConsolePreview: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   {current.currentParcel.eudrStatus === 'VERIFIED' ? (
-                    <>
-                      <CheckCircle className="w-4 h-4 text-[#4C8B5C]" />
-                      <span className="text-sm font-bold font-headline text-[#4C8B5C]">EUDR Cleared</span>
-                    </>
+                    <Badge variant="verified" className="py-0.5 px-2 text-xs font-bold font-headline">
+                      <CheckCircle className="w-3.5 h-3.5 text-[#4C8B5C]" />
+                      <span>EUDR Cleared</span>
+                    </Badge>
                   ) : (
-                    <>
-                      <AlertTriangle className="w-4 h-4 text-[#D97706]" />
-                      <span className="text-sm font-bold font-headline text-[#D97706]">Buffer Review</span>
-                    </>
+                    <Badge variant="warning" className="py-0.5 px-2 text-xs font-bold font-headline">
+                      <AlertTriangle className="w-3.5 h-3.5 text-[#D97706]" />
+                      <span>Buffer Review</span>
+                    </Badge>
                   )}
                 </div>
                 <div className="text-[10px] font-mono text-[#A4B8B2] mt-1.5">
@@ -373,10 +390,10 @@ export const MrvConsolePreview: React.FC = () => {
                 <span className="text-[10px] font-mono uppercase text-[#CFF4A7]">
                   Targeted Agronomic Action
                 </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#4C8B5C]">
-                  <CheckCircle className="w-3 h-3" />
+                <Badge variant="verified" className="text-[10px] font-mono py-0 px-1.5">
+                  <CheckCircle className="w-3 h-3 text-[#4C8B5C]" />
                   Verified
-                </span>
+                </Badge>
               </div>
               <p className="text-xs text-[#E7EFE5] leading-relaxed mb-2">
                 {current.currentParcel.fieldAction}

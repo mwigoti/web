@@ -1,5 +1,4 @@
 import React from 'react';
-import { MapPin, Satellite, Navigation, FileCheck } from 'lucide-react';
 import { Reveal } from './Reveal';
 
 export const HowItWorks: React.FC = () => {
@@ -7,28 +6,24 @@ export const HowItWorks: React.FC = () => {
     {
       num: '01',
       title: 'Boundary & Baseline',
-      icon: MapPin,
       summary: 'GPS parcel perimeter is registered with 5-year historical vegetative and forest cover baselines.',
       outcome: 'Establishes recognized digital land tenure and locks Dec 2020 deforestation cutoff.',
     },
     {
       num: '02',
       title: 'Continuous Observation',
-      icon: Satellite,
       summary: 'Copernicus Sentinel-2 & Planet multispectral passes monitor canopy vigor and moisture every 5 days.',
       outcome: 'Replaces sporadic manual visits with 100% continuous digital oversight across every farm.',
     },
     {
       num: '03',
       title: 'Targeted Ground Action',
-      icon: Navigation,
       summary: 'Automated algorithms flag moisture or canopy stress, routing field agronomists only where needed.',
       outcome: 'Saves 70% of field travel costs; averts up to 35% harvest loss through early intervention.',
     },
     {
       num: '04',
       title: 'Audit-Ready Clearance',
-      icon: FileCheck,
       summary: 'Every satellite pass and field remediation is cryptographically signed into an immutable ledger.',
       outcome: 'Instantly exports verified EUDR Due Diligence Statements (DDS) ready for customs.',
     },
@@ -54,7 +49,6 @@ export const HowItWorks: React.FC = () => {
         {/* 4-Step Minimalist Grid with Staggered Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => {
-            const Icon = step.icon;
             return (
               <Reveal
                 key={step.num}
@@ -63,10 +57,8 @@ export const HowItWorks: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold text-[#1A532E] bg-[#E5F3E7] px-2.5 py-1 rounded-full border border-[#BCDDC3]">{step.num}</span>
-                    <div className="w-8 h-8 rounded-full bg-white border border-[#D5DDD7] flex items-center justify-center text-[#1D3130]">
-                      <Icon className="w-4 h-4 text-[#1D3130]" />
-                    </div>
+                    <span className="text-xs font-mono font-bold text-[#1A532E] bg-[#E5F3E7] px-2.5 py-1 rounded-full border border-[#BCDDC3]">STAGE {step.num}</span>
+                    <span className="text-[11px] font-mono text-[#526660]">Verified Step</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-[#0F1E1B] mb-2.5">
                     {step.title}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { HeartHandshake, TreePine, TrendingUp, ShieldCheck, Users, Check, ArrowRight } from 'lucide-react';
+import { HeartHandshake, TreePine, TrendingUp, Users } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const SocialImpactSection: React.FC = () => {
   const [activeStory, setActiveStory] = useState<'inclusion' | 'resilience' | 'forests'>('inclusion');
@@ -32,9 +34,11 @@ export const SocialImpactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#CFF4A7] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#CFF4A7]" />
-            <span>Social &amp; Environmental Impact</span>
+          <div className="mb-3">
+            <Badge variant="default" className="text-xs font-semibold uppercase tracking-wider py-1 px-3 gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#11201D]" />
+              <span>Social &amp; Environmental Impact</span>
+            </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight mb-5">
             Technology designed to protect farmers, not displace them.
@@ -49,9 +53,9 @@ export const SocialImpactSection: React.FC = () => {
         {/* 4 Key Social Impact Metrics (Editorial Style) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {impactMetrics.map((item) => (
-            <div
+            <Card
               key={item.label}
-              className="bg-[#1D3130] border border-[#2B4543] p-6 rounded-sm flex flex-col justify-between"
+              className="bg-[#1D3130] border-[#2B4543] p-6 rounded-xl flex flex-col justify-between text-white"
             >
               <div>
                 <span className="font-headline text-3xl sm:text-4xl font-bold tabular-nums text-[#CFF4A7] block mb-2">
@@ -64,7 +68,7 @@ export const SocialImpactSection: React.FC = () => {
               <p className="text-xs text-[#A4B8B2] leading-relaxed pt-3 border-t border-[#253E3D]">
                 {item.desc}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
 
@@ -75,7 +79,7 @@ export const SocialImpactSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveStory('inclusion')}
-              className={`text-left p-6 rounded-sm border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
                 activeStory === 'inclusion'
                   ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
                   : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
@@ -95,7 +99,7 @@ export const SocialImpactSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveStory('resilience')}
-              className={`text-left p-6 rounded-sm border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
                 activeStory === 'resilience'
                   ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
                   : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
@@ -115,7 +119,7 @@ export const SocialImpactSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveStory('forests')}
-              className={`text-left p-6 rounded-sm border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
                 activeStory === 'forests'
                   ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
                   : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
@@ -134,7 +138,7 @@ export const SocialImpactSection: React.FC = () => {
           </div>
 
           {/* Right Column: Case Story Card with Authentic Photo */}
-          <div className="lg:col-span-7 bg-[#1D3130] border border-[#2B4543] rounded-sm overflow-hidden flex flex-col justify-between">
+          <Card className="lg:col-span-7 bg-[#1D3130] border-[#2B4543] rounded-xl overflow-hidden flex flex-col justify-between text-white p-0">
             {activeStory === 'inclusion' && (
               <div>
                 <div className="relative h-64 sm:h-72 overflow-hidden">
@@ -147,16 +151,16 @@ export const SocialImpactSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1D3130] via-transparent to-black/20" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded bg-[#152522]/90 border border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
+                    <Badge variant="outline" className="px-3 py-1 bg-[#152522]/90 border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
                       Nyeri County Coffee Cooperative
-                    </span>
+                    </Badge>
                     <span className="text-xs text-white/90 font-mono">1,240 Farming Households</span>
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
-                  <span className="text-xs font-mono uppercase text-[#CFF4A7] tracking-wider block mb-2">
+                  <Badge variant="outline" className="text-xs font-mono uppercase text-[#CFF4A7] border-[#CFF4A7]/40 tracking-wider mb-2">
                     Social Equity in Global Trade
-                  </span>
+                  </Badge>
                   <h3 className="text-2xl font-bold text-white mb-3 leading-snug">
                     Defending smallholders against unfair market lockout
                   </h3>
@@ -193,16 +197,16 @@ export const SocialImpactSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1D3130] via-transparent to-black/20" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded bg-[#152522]/90 border border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
+                    <Badge variant="outline" className="px-3 py-1 bg-[#152522]/90 border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
                       Mount Kenya Outgrowers
-                    </span>
+                    </Badge>
                     <span className="text-xs text-white/90 font-mono">Horticultural Smallholders</span>
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
-                  <span className="text-xs font-mono uppercase text-[#CFF4A7] tracking-wider block mb-2">
+                  <Badge variant="outline" className="text-xs font-mono uppercase text-[#CFF4A7] border-[#CFF4A7]/40 tracking-wider mb-2">
                     Climate Adaptation &amp; Food Security
-                  </span>
+                  </Badge>
                   <h3 className="text-2xl font-bold text-white mb-3 leading-snug">
                     Preventing crop failure before wilting begins
                   </h3>
@@ -239,16 +243,16 @@ export const SocialImpactSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1D3130] via-transparent to-black/20" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded bg-[#152522]/90 border border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
+                    <Badge variant="outline" className="px-3 py-1 bg-[#152522]/90 border-[#2B4543] text-xs font-mono text-[#CFF4A7]">
                       Mau Forest Ecosystem Buffer
-                    </span>
+                    </Badge>
                     <span className="text-xs text-white/90 font-mono">Riparian Corridor Protection</span>
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
-                  <span className="text-xs font-mono uppercase text-[#CFF4A7] tracking-wider block mb-2">
+                  <Badge variant="outline" className="text-xs font-mono uppercase text-[#CFF4A7] border-[#CFF4A7]/40 tracking-wider mb-2">
                     Environmental Protection
-                  </span>
+                  </Badge>
                   <h3 className="text-2xl font-bold text-white mb-3 leading-snug">
                     Verifying regenerative agriculture and zero deforestation
                   </h3>
@@ -272,20 +276,20 @@ export const SocialImpactSection: React.FC = () => {
                 </div>
               </div>
             )}
-          </div>
+          </Card>
         </div>
 
         {/* Commitment Statement Footer */}
-        <div className="mt-12 p-6 rounded-sm bg-[#1D3130] border border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mt-12 p-6 rounded-xl bg-[#1D3130] border border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <HeartHandshake className="w-5 h-5 text-[#CFF4A7] shrink-0" />
             <p className="text-xs sm:text-sm text-[#E7EFE5]">
               <span className="font-semibold text-white">TerraSat Impact Commitment:</span> We ensure digital MRV remains affordable for farmer producer organizations and smallholder cooperatives across Kenya, Uganda, Rwanda, and Tanzania.
             </p>
           </div>
-          <span className="text-xs font-mono text-[#CFF4A7] uppercase tracking-wider shrink-0">
+          <Badge variant="outline" className="text-xs font-mono text-[#CFF4A7] border-[#CFF4A7]/30 uppercase tracking-wider shrink-0 py-1 px-3">
             Fair Agri-Tech Principles
-          </span>
+          </Badge>
         </div>
       </div>
     </section>

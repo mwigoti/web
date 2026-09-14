@@ -1,5 +1,7 @@
 import React from 'react';
 import { Satellite, Radio, MapPin, Eye } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const DataSources: React.FC = () => {
   const sources = [
@@ -38,9 +40,11 @@ export const DataSources: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-10 border-b border-[#2B4543]/70">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#CFF4A7] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CFF4A7]" />
-              <span>Multi-Source Observation Infrastructure</span>
+            <div className="mb-2">
+              <Badge variant="default" className="text-xs font-semibold uppercase tracking-wider py-1 px-3 gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#11201D]" />
+                <span>Multi-Source Observation Infrastructure</span>
+              </Badge>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
               Grounded in Real, Continuous Observation Feeds
@@ -57,15 +61,15 @@ export const DataSources: React.FC = () => {
           {sources.map((src) => {
             const Icon = src.icon;
             return (
-              <div
+              <Card
                 key={src.name}
-                className="p-5 rounded-sm bg-[#1D3130] border border-[#2B4543] flex flex-col justify-between hover:border-[#CFF4A7]/30 transition-colors"
+                className="p-5 rounded-xl bg-[#1D3130] border-[#2B4543] flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono uppercase text-[#A4B8B2]">
+                    <Badge variant="outline" className="text-[10px] font-mono uppercase text-[#A4B8B2] border-[#2B4543] bg-[#162A27] px-2 py-0.5">
                       {src.category}
-                    </span>
+                    </Badge>
                     <Icon className="w-4 h-4 text-[#CFF4A7]" />
                   </div>
                   <h4 className="text-base font-bold text-white mb-2 leading-snug">
@@ -83,12 +87,12 @@ export const DataSources: React.FC = () => {
                   <span className="text-[10px] font-mono uppercase text-[#A4B8B2]">
                     Status
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#4C8B5C]">
+                  <Badge variant="outline" className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#4C8B5C] border-[#4C8B5C]/30 bg-[#162924] px-2 py-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4C8B5C]" />
                     Active Pipeline
-                  </span>
+                  </Badge>
                 </div>
-              </div>
+              </Card>
             );
           })}
         </div>

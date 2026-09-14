@@ -2,6 +2,8 @@ import React from 'react';
 import { CheckCircle, AlertTriangle, ShieldCheck, TrendingDown, Users, Trees } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { Card3D } from './Card3D';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const ImpactSection: React.FC = () => {
   const metrics = [
@@ -30,9 +32,11 @@ export const ImpactSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <Reveal className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5F3E7] text-[#1A532E] border border-[#BCDDC3] text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D47] animate-pulse" />
-            <span>Impact &amp; Economics</span>
+          <div className="mb-4">
+            <Badge variant="outline" className="text-xs font-semibold font-mono uppercase tracking-wider bg-[#E5F3E7] text-[#1A532E] border-[#BCDDC3] gap-2 py-1 px-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D47] animate-pulse" />
+              <span>Impact &amp; Economics</span>
+            </Badge>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F1E1B] leading-[1.2] mb-4">
             Protecting smallholder livelihoods while meeting strict EUDR standards.
@@ -55,9 +59,9 @@ export const ImpactSection: React.FC = () => {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#2B403B]">
+                      <Badge variant="secondary" className="text-xs font-mono font-semibold uppercase tracking-wider text-[#2B403B] bg-[#EEF2EA] border-[#D8DFD5]">
                         {m.label}
-                      </span>
+                      </Badge>
                       <div className="w-9 h-9 rounded-full bg-[#EAF5EC] border border-[#C2E4CD] flex items-center justify-center text-[#1E5C35] shadow-xs">
                         <Icon className="w-4 h-4" />
                       </div>
@@ -77,12 +81,14 @@ export const ImpactSection: React.FC = () => {
 
         {/* Minimalist 2-Column Comparison with Reveal */}
         <Reveal delay={0.2}>
-          <div className="bg-white border border-[#D5DDD7] rounded-2xl shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          <Card className="bg-white border-[#D5DDD7] rounded-2xl shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-2 p-0">
             {/* The Manual Audit Trap */}
             <div className="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[#D5DDD7] bg-[#FAFBF8]">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-                <AlertTriangle className="w-3.5 h-3.5 text-[#B45309]" />
-                <span>The Manual Audit Barrier</span>
+              <div className="mb-4">
+                <Badge variant="outline" className="gap-2 bg-[#FEF3C7] text-[#92400E] border-[#FDE68A] text-xs font-semibold font-mono uppercase tracking-wider py-1 px-3">
+                  <AlertTriangle className="w-3.5 h-3.5 text-[#B45309]" />
+                  <span>The Manual Audit Barrier</span>
+                </Badge>
               </div>
               <h3 className="text-xl font-bold text-[#0F1E1B] mb-4">
                 Costly, sporadic paper surveys exclude smallholders
@@ -105,9 +111,11 @@ export const ImpactSection: React.FC = () => {
 
             {/* The TerraFarm Approach */}
             <div className="p-8 sm:p-10 bg-white">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DCFCE7] text-[#14532D] border border-[#BBF7D0] text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#15803D]" />
-                <span>The TerraFarm Continuous Standard</span>
+              <div className="mb-4">
+                <Badge variant="outline" className="gap-2 bg-[#DCFCE7] text-[#14532D] border-[#BBF7D0] text-xs font-semibold font-mono uppercase tracking-wider py-1 px-3">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#15803D]" />
+                  <span>The TerraFarm Continuous Standard</span>
+                </Badge>
               </div>
               <h3 className="text-xl font-bold text-[#0F1E1B] mb-4">
                 Continuous satellite MRV with targeted field response
@@ -127,7 +135,7 @@ export const ImpactSection: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </Card>
         </Reveal>
       </div>
     </section>

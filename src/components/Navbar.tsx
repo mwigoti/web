@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Menu, X, ArrowUpRight, ArrowLeft, Sprout, Waves, ArrowRight } from 'lucide-react';
+import { Button } from '@/src/components/ui/button';
+import { Badge } from '@/src/components/ui/badge';
 
 interface NavbarProps {
   onRequestDemo: () => void;
@@ -23,8 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
   const homeLinks = [
     { label: 'Solutions', href: '#solutions' },
     { label: 'Focus Areas', href: '#focus-areas' },
-    { label: 'Impact & Standards', href: '#impact' },
     { label: 'Who We Are', href: '#about' },
+    { label: 'Partners', href: '#partners' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -59,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#11201D]/95 backdrop-blur-md border-b border-[#2B4543] py-3.5 shadow-sm'
-          : 'bg-gradient-to-b from-[#11201D]/95 via-[#152522]/60 to-transparent py-4'
+          : 'bg-[#11201D]/90 backdrop-blur-md border-b border-[#2B4543]/80 py-4 shadow-xs'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -79,17 +81,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6" aria-label="Main Navigation">
           {activeView !== 'home' && (
-            <button
+            <Button
               type="button"
+              variant="outline"
+              size="sm"
               onClick={() => {
                 onNavigate('home');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#162A27] border border-[#2B4543] text-xs font-mono text-[#CFF4A7] hover:bg-[#1C332F] transition-all cursor-pointer mr-2"
+              className="gap-1.5 rounded-full bg-[#162A27] border-[#2B4543] text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] hover:bg-[#1C332F] cursor-pointer mr-2 h-8"
             >
               <ArrowLeft className="w-3 h-3" />
               <span>TerraSat Overview</span>
-            </button>
+            </Button>
           )}
 
           {currentLinks.map((link) => (
@@ -105,28 +109,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
           {/* Solution Switching Pills in Home Nav */}
           {activeView === 'home' && (
             <div className="flex items-center gap-2 pl-2 border-l border-[#2B4543]">
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
                 onClick={() => {
                   onNavigate('terrafarm');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#182C29] border border-[#2B4543] text-xs font-mono text-[#E7EFE5] hover:text-[#CFF4A7] hover:border-[#CFF4A7]/50 transition-all cursor-pointer"
+                className="gap-1.5 rounded-full bg-[#182C29] border-[#2B4543] text-xs font-mono text-[#E7EFE5] hover:text-[#CFF4A7] hover:border-[#CFF4A7]/50 h-7 px-3"
               >
                 <Sprout className="w-3 h-3 text-[#CFF4A7]" />
                 <span>Terra Farm</span>
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
                 onClick={() => {
                   onNavigate('newis');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#182C29] border border-[#2B4543] text-xs font-mono text-[#E7EFE5] hover:text-[#38BDF8] hover:border-[#38BDF8]/50 transition-all cursor-pointer"
+                className="gap-1.5 rounded-full bg-[#182C29] border-[#2B4543] text-xs font-mono text-[#E7EFE5] hover:text-[#38BDF8] hover:border-[#38BDF8]/50 h-7 px-3"
               >
                 <Waves className="w-3 h-3 text-[#38BDF8]" />
                 <span>NEWIS</span>
-              </button>
+              </Button>
             </div>
           )}
 
@@ -162,15 +170,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
 
         {/* Desktop Action */}
         <div className="hidden lg:flex items-center gap-4">
-          <button
+          <Button
             id="nav-request-demo-btn"
             type="button"
+            variant="default"
+            size="sm"
             onClick={onRequestDemo}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#CFF4A7] text-[#1D3130] font-headline font-bold text-xs xl:text-sm hover:bg-[#bce68f] active:scale-[0.98] transition-all cursor-pointer shadow-sm hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="rounded-full shadow-sm text-xs xl:text-sm font-bold gap-2 px-5 py-2.5 h-10"
           >
             <span>Request a demo</span>
             <ArrowUpRight className="w-4 h-4" />
-          </button>
+          </Button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -260,18 +270,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
           </nav>
 
           <div className="pt-2">
-            <button
+            <Button
               id="mobile-drawer-demo-btn"
               type="button"
+              variant="default"
+              size="lg"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onRequestDemo();
               }}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#CFF4A7] text-[#1D3130] font-headline font-bold text-base hover:bg-[#bce68f] transition-all cursor-pointer"
+              className="w-full rounded-full font-bold text-base gap-2"
             >
               <span>Request a demo</span>
               <ArrowUpRight className="w-4 h-4" />
-            </button>
+            </Button>
           </div>
         </div>
       )}

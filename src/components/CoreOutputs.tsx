@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Layers, ShieldCheck, FileSpreadsheet, Check } from 'lucide-react';
+import { Layers, ShieldCheck, FileSpreadsheet, Check, Code, FileText } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/src/components/ui/tabs';
 
 export const CoreOutputs: React.FC = () => {
   const [activePillar, setActivePillar] = useState<'all' | 'monitoring' | 'evidence' | 'reporting'>('all');
@@ -219,55 +222,43 @@ export const CoreOutputs: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-[#E3E7DF] pb-4">
-          <button
-            type="button"
-            onClick={() => setActivePillar('all')}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer ${
-              activePillar === 'all'
-                ? 'bg-[#1D3130] text-[#CFF4A7]'
-                : 'text-[#475B55] hover:text-[#1D3130] bg-[#F7F8F3]'
-            }`}
+        {/* Filter Tabs using shadcn Tabs */}
+        <div className="mb-8 border-b border-[#E3E7DF] pb-4">
+          <Tabs
+            value={activePillar}
+            onValueChange={(val) => setActivePillar(val as 'all' | 'monitoring' | 'evidence' | 'reporting')}
+            className="w-full"
           >
-            All Deliverables ({outputs.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => setActivePillar('monitoring')}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
-              activePillar === 'monitoring'
-                ? 'bg-[#1D3130] text-[#CFF4A7]'
-                : 'text-[#475B55] hover:text-[#1D3130] bg-[#F7F8F3]'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>1. Monitoring &amp; Baselines</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActivePillar('evidence')}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
-              activePillar === 'evidence'
-                ? 'bg-[#1D3130] text-[#CFF4A7]'
-                : 'text-[#475B55] hover:text-[#1D3130] bg-[#F7F8F3]'
-            }`}
-          >
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>2. Risk Detection &amp; Evidence</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActivePillar('reporting')}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
-              activePillar === 'reporting'
-                ? 'bg-[#1D3130] text-[#CFF4A7]'
-                : 'text-[#475B55] hover:text-[#1D3130] bg-[#F7F8F3]'
-            }`}
-          >
-            <FileSpreadsheet className="w-3.5 h-3.5" />
-            <span>3. Compliance &amp; Reporting</span>
-          </button>
+            <TabsList className="bg-[#F0F2EB] border-[#E3E7DF] p-1 flex-wrap h-auto">
+              <TabsTrigger
+                value="all"
+                className="data-[state=active]:bg-[#1D3130] data-[state=active]:text-[#CFF4A7] text-[#475B55]"
+              >
+                All Deliverables ({outputs.length})
+              </TabsTrigger>
+              <TabsTrigger
+                value="monitoring"
+                className="data-[state=active]:bg-[#1D3130] data-[state=active]:text-[#CFF4A7] text-[#475B55] flex items-center gap-1.5"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>1. Monitoring &amp; Baselines</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="evidence"
+                className="data-[state=active]:bg-[#1D3130] data-[state=active]:text-[#CFF4A7] text-[#475B55] flex items-center gap-1.5"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>2. Risk Detection &amp; Evidence</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="reporting"
+                className="data-[state=active]:bg-[#1D3130] data-[state=active]:text-[#CFF4A7] text-[#475B55] flex items-center gap-1.5"
+              >
+                <FileSpreadsheet className="w-3.5 h-3.5" />
+                <span>3. Compliance &amp; Reporting</span>
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
 
         {/* Structured Specification Data Table (No Generic Icon Grids) */}
@@ -299,9 +290,9 @@ export const CoreOutputs: React.FC = () => {
                             <span className="font-bold text-[#1D3130]">
                               {item.name}
                             </span>
-                            <span className="text-[10px] font-mono text-[#475B55] bg-white border border-[#E3E7DF] px-1.5 py-0.5 rounded">
+                            <Badge variant="outline" className="text-[10px] bg-white border-[#E3E7DF] text-[#475B55] px-2 py-0">
                               {isExpanded ? 'Hide Schema' : 'Inspect'}
-                            </span>
+                            </Badge>
                           </div>
                           <span className="inline-block mt-1 text-[11px] font-mono text-[#475B55] uppercase">
                             {item.pillar}
@@ -327,10 +318,10 @@ export const CoreOutputs: React.FC = () => {
                           <p className="text-xs sm:text-sm text-[#16211F]/90 leading-relaxed font-normal mb-2">
                             {item.purpose}
                           </p>
-                          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#4C8B5C] bg-[#4C8B5C]/10 px-2 py-0.5 rounded-sm border border-[#4C8B5C]/20">
+                          <Badge variant="verified" className="text-[11px] font-medium inline-flex items-center gap-1.5 py-0.5 px-2.5">
                             <Check className="w-3 h-3 text-[#4C8B5C]" />
                             <span>{item.standard}</span>
-                          </div>
+                          </Badge>
                         </td>
                       </tr>
 
@@ -348,16 +339,28 @@ export const CoreOutputs: React.FC = () => {
                                 </h4>
                               </div>
                               <div className="flex items-center gap-3">
-                                <button
+                                <Button
                                   type="button"
+                                  variant="outline"
+                                  size="sm"
                                   onClick={() => setShowRawCode(!showRawCode)}
-                                  className="text-[11px] font-mono text-[#A4B8B2] hover:text-[#CFF4A7] underline cursor-pointer"
+                                  className="h-7 text-xs font-mono gap-1.5 border-[#2B4543] bg-[#122220] hover:bg-[#1D3130] text-[#D6E3DE] hover:text-[#CFF4A7]"
                                 >
-                                  {showRawCode ? 'Show Impact Overview' : 'View Raw JSON Payload'}
-                                </button>
-                                <span className="text-[11px] font-mono bg-[#1D3130] text-[#CFF4A7] px-2 py-0.5 rounded border border-[#2B4543]">
+                                  {showRawCode ? (
+                                    <>
+                                      <FileText className="w-3.5 h-3.5" />
+                                      <span>Show Impact Overview</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Code className="w-3.5 h-3.5" />
+                                      <span>View Raw JSON Payload</span>
+                                    </>
+                                  )}
+                                </Button>
+                                <Badge variant="default" className="text-xs font-mono py-1 px-2.5">
                                   {item.standard}
-                                </span>
+                                </Badge>
                               </div>
                             </div>
 

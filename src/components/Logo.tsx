@@ -6,6 +6,7 @@ interface LogoProps {
   showWordmark?: boolean;
   wordmarkColor?: 'forest' | 'white';
   productSubtitle?: string;
+  emblemClassName?: string;
 }
 
 /**
@@ -19,6 +20,7 @@ export const Logo: React.FC<LogoProps> = ({
   showWordmark = true,
   wordmarkColor = 'white',
   productSubtitle = 'Impact Co. · Climate Intelligence',
+  emblemClassName = 'text-[#CFF4A7]',
 }) => {
   const bladePoints = '0,0 0,-84 28,-84 28,-16.166';
 
@@ -29,7 +31,7 @@ export const Logo: React.FC<LogoProps> = ({
         height={size}
         viewBox="-100 -100 200 200"
         fill="currentColor"
-        className="text-[#CFF4A7] shrink-0 transition-transform duration-300 hover:rotate-30"
+        className={`shrink-0 transition-transform duration-300 hover:rotate-30 ${emblemClassName}`}
         aria-label="TerraSat pinwheel emblem"
         role="img"
       >

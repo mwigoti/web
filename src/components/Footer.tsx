@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { ArrowUpRight, CheckCircle, Mail, MapPin, Send, ShieldCheck, Award } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
 
 interface FooterProps {
   onRequestDemo?: () => void;
@@ -43,28 +45,30 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Column */}
             <Reveal className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CFF4A7]/15 text-[#CFF4A7] border border-[#CFF4A7]/30 text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CFF4A7] animate-pulse" />
-                <span>Early Warning &amp; Continuous Compliance</span>
+              <div className="mb-4">
+                <Badge variant="default" className="text-xs font-mono uppercase tracking-wider py-1 px-3 gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#CFF4A7] animate-pulse" />
+                  <span>Early Warning &amp; Continuous Compliance</span>
+                </Badge>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
                 Cultivating Africa's future with space technology.
               </h2>
-              <p className="text-sm sm:text-base text-[#E7EFE5]/85 leading-relaxed mb-6 font-normal">
+              <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed mb-6 font-normal">
                 Schedule a technical walkthrough with our geospatial and agronomic intelligence team in Nairobi. We assess your coordinates, flood exposure, and compliance timelines.
               </p>
 
-              <div className="flex flex-wrap gap-3 pt-4 border-t border-[#253E3D] text-xs text-[#E7EFE5] font-mono">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#162926] border border-[#2B4543]">
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-[#253E3D]">
+                <Badge variant="outline" className="text-xs font-mono py-1 px-3 bg-[#162926] border-[#2B4543] text-[#E7EFE5] gap-2">
                   <MapPin className="w-3.5 h-3.5 text-[#CFF4A7]" />
                   <span>Nairobi, Kenya &amp; Kigali, Rwanda</span>
-                </div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#162926] border border-[#2B4543]">
+                </Badge>
+                <Badge variant="outline" className="text-xs font-mono py-1 px-3 bg-[#162926] border-[#2B4543] text-[#E7EFE5] gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#CFF4A7]" />
                   <a href="mailto:hello@terraxat.com" className="hover:text-[#CFF4A7] transition-colors">
                     hello@terraxat.com
                   </a>
-                </div>
+                </Badge>
               </div>
             </Reveal>
 
@@ -81,13 +85,15 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                   <p className="text-sm text-[#E7EFE5]/90 max-w-sm mx-auto leading-relaxed mb-5">
                     Thank you, {formData.name || 'Partner'}. The TerraSat Impact team will contact you at <span className="text-[#CFF4A7] font-mono font-semibold">{formData.email}</span> within 24 hours.
                   </p>
-                  <button
+                  <Button
                     type="button"
+                    variant="outline"
+                    size="sm"
                     onClick={() => setFormSubmitted(false)}
-                    className="inline-flex items-center gap-1 text-xs font-mono text-[#CFF4A7] hover:underline px-4 py-2 rounded-full bg-[#11201D] border border-[#2B4543]"
+                    className="text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] rounded-full bg-[#11201D] border-[#2B4543]"
                   >
                     ← Submit another inquiry
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -163,13 +169,15 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                   </div>
 
                   <div className="pt-2">
-                    <button
+                    <Button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#CFF4A7] text-[#1D3130] font-headline font-bold text-sm hover:bg-[#bce68f] active:scale-[0.98] transition-all cursor-pointer shadow-md hover:shadow-lg"
+                      variant="default"
+                      size="lg"
+                      className="w-full rounded-full font-headline font-bold text-sm shadow-md hover:shadow-lg gap-2"
                     >
                       <span>Submit Inquiry</span>
                       <Send className="w-4 h-4" />
-                    </button>
+                    </Button>
                   </div>
                 </form>
               )}
@@ -245,10 +253,10 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
               </ul>
             </div>
 
-            {/* Focus & Standards Column */}
+            {/* Focus & Architecture Column */}
             <div>
               <h4 className="text-xs font-mono uppercase tracking-wider text-[#CFF4A7] font-semibold mb-4">
-                Platform &amp; Standards
+                Domains &amp; Architecture
               </h4>
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#D6E3DE] font-medium">
                 <li>
@@ -257,34 +265,43 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                     onClick={() => handleNav('home', '#focus-areas')}
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
-                    6 Focus Areas
+                    6 African Risk Domains
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
-                    onClick={() => handleNav('home', '#impact')}
+                    onClick={() => handleNav('home', '#solutions')}
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
-                    EUDR Compliance
+                    Core Solutions (Terra Farm &amp; NEWIS)
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
-                    onClick={() => handleNav('home', '#impact')}
+                    onClick={() => handleNav('terrafarm')}
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
-                    Disaster Protocols (ISO)
+                    Terra Farm Platform
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
-                    onClick={() => handleNav('home', '#impact')}
+                    onClick={() => handleNav('terrafarm', '#how-it-works')}
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
-                    Who We Serve
+                    EUDR Radar &amp; Optical MRV
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('newis', '#operational-cycle')}
+                    className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
+                  >
+                    Disaster Early Warning System
                   </button>
                 </li>
               </ul>
@@ -312,6 +329,15 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
                     Leadership Team
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => handleNav('home', '#partners')}
+                    className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
+                  >
+                    Partners &amp; Alliances
                   </button>
                 </li>
                 <li>

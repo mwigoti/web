@@ -1,159 +1,143 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowDown, ArrowUpRight, Award, Globe, Smartphone, Waves, Sprout } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { Button } from '@/src/components/ui/button';
+import africaMapImg from '../assets/images/africa_relief_map_1789035229990.jpg';
 
 interface TerraSatHeroProps {
   onRequestDemo: () => void;
-  onExploreTerraFarm: () => void;
-  onExploreNewis: () => void;
+  onExploreTerraFarm?: () => void;
+  onExploreNewis?: () => void;
 }
 
 export const TerraSatHero: React.FC<TerraSatHeroProps> = ({
   onRequestDemo,
-  onExploreTerraFarm,
-  onExploreNewis,
 }) => {
   return (
     <section
       id="top"
-      className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#11201D] text-white border-b border-[#253D3A]"
+      className="relative min-h-[92vh] sm:min-h-screen pt-32 pb-24 sm:pt-40 sm:pb-32 lg:pt-44 lg:pb-36 bg-[#F7F9F5] text-[#11201D] border-b border-[#D8DFD5] overflow-hidden flex flex-col items-center justify-center"
     >
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Badge / Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1A312D] border border-[#CFF4A7]/40 text-xs font-mono text-[#CFF4A7] uppercase tracking-wider mb-3.5 shadow-sm"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#CFF4A7]" />
-          <span>TerraSat Impact · Climate Risk Intelligence</span>
-        </motion.div>
-
-        {/* Primary Headline - scaled for optimal viewport density without pushing cards below the fold */}
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.08 }}
-          className="text-3xl sm:text-4xl lg:text-[50px] font-extrabold tracking-tight text-white leading-[1.12] mb-3.5 max-w-3xl"
-        >
-          Cultivating Africa's future, using{' '}
-          <span className="text-[#CFF4A7]">
-            space technology
-          </span>
-        </motion.h1>
-
-        {/* Subhead narrative - WCAG AA compliant text color #D6E3DE (contrast ratio 11.2:1) */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-sm sm:text-base text-[#D6E3DE] max-w-2xl leading-relaxed mb-5 font-normal"
-        >
-          TerraSat Impact turns satellite and IoT data into verifiable action on the ground —
-          from flood warnings that reach feature phones in minutes, to farm-level
-          evidence that keeps East African exports compliant. Two products. One shared
-          Earth observation and ground truth engine.
-        </motion.p>
-
-        {/* Credential Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-2.5 mb-6 text-xs font-mono"
-        >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#182C29] border border-[#2B4543]">
-            <Award className="w-3.5 h-3.5 text-[#F59E0B]" />
-            <span className="text-[#E7EFE5] font-medium">ACT in Space Kenya 2026 Winner</span>
-          </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#182C29] border border-[#2B4543]">
-            <Globe className="w-3.5 h-3.5 text-[#38BDF8]" />
-            <span className="text-[#E7EFE5] font-medium">HQ in Nairobi &amp; Kigali</span>
-          </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#182C29] border border-[#2B4543]">
-            <Smartphone className="w-3.5 h-3.5 text-[#CFF4A7]" />
-            <span className="text-[#E7EFE5] font-medium">Zero-Smartphone SMS/USSD</span>
-          </div>
-        </motion.div>
-
-        {/* Primary CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md mb-6"
-        >
-          <button
-            type="button"
-            onClick={onRequestDemo}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#CFF4A7] text-[#1D3130] font-headline font-bold text-xs sm:text-sm hover:bg-[#bce68f] active:scale-[0.98] transition-all cursor-pointer shadow-md"
-          >
-            <span>Request a Demo</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-
-          <a
-            href="#solutions"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#2B4543] bg-[#182C29] text-[#E7EFE5] hover:border-[#CFF4A7]/60 hover:text-[#CFF4A7] text-xs sm:text-sm font-medium transition-all shadow-sm"
-          >
-            <span>Compare Products</span>
-            <ArrowDown className="w-3.5 h-3.5" />
-          </a>
-        </motion.div>
-
-        {/* Dual Product Cards - Positioned ABOVE THE FOLD on 768px laptop screens */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-3.5 w-full max-w-3xl text-left"
-        >
-          {/* Solution 1: Terra Farm */}
-          <button
-            type="button"
-            onClick={onExploreTerraFarm}
-            className="group text-left block p-4 sm:p-4.5 rounded-xl bg-[#162A27] border border-[#2B4543] hover:border-[#CFF4A7] hover:bg-[#1A332F] transition-all cursor-pointer w-full shadow-sm"
-          >
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#CFF4A7] font-semibold flex items-center gap-1.5">
-                <Sprout className="w-3.5 h-3.5 text-[#CFF4A7]" /> Product 01 · Agricultural MRV
-              </span>
-              <span className="text-xs font-mono text-[#CFF4A7] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                Explore →
-              </span>
-            </div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-1 group-hover:text-[#CFF4A7] transition-colors">
-              Terra Farm
-            </h3>
-            <p className="text-xs text-[#D6E3DE] leading-relaxed">
-              Satellite &amp; IoT MRV ensuring smallholder EUDR compliance, baseline verification, and zero manual survey penalties.
-            </p>
-          </button>
-
-          {/* Solution 2: NEWIS */}
-          <button
-            type="button"
-            onClick={onExploreNewis}
-            className="group text-left block p-4 sm:p-4.5 rounded-xl bg-[#162A27] border border-[#2B4543] hover:border-[#38BDF8] hover:bg-[#1A332F] transition-all cursor-pointer w-full shadow-sm"
-          >
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#38BDF8] font-semibold flex items-center gap-1.5">
-                <Waves className="w-3.5 h-3.5 text-[#38BDF8]" /> Product 02 · Flood Early Warning
-              </span>
-              <span className="text-xs font-mono text-[#38BDF8] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                Explore →
-              </span>
-            </div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-1 group-hover:text-[#38BDF8] transition-colors">
-              NEWIS
-            </h3>
-            <p className="text-xs text-[#D6E3DE] leading-relaxed">
-              Nairobi Early Warning &amp; Intervention System turning flood data into ward-level SMS/USSD alerts and safe routing.
-            </p>
-          </button>
-        </motion.div>
+      {/* High-Contrast Embossed Africa Relief Map Backdrop */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-0">
+        <img
+          src={africaMapImg}
+          alt=""
+          aria-hidden="true"
+          referrerPolicy="no-referrer"
+          className="w-[860px] sm:w-[1100px] lg:w-[1380px] xl:w-[1550px] max-w-none h-auto object-contain opacity-85 sm:opacity-95 mix-blend-multiply select-none filter contrast-135 brightness-95 saturate-110"
+        />
+        {/* Contrast Shield: Generous radial luminance gradient that guarantees pristine WCAG AAA legibility for the headline and text, completely preventing color clashing with dark topography */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 960px 620px at 50% 48%, rgba(247, 249, 245, 0.96) 0%, rgba(247, 249, 245, 0.88) 36%, rgba(247, 249, 245, 0.28) 72%, transparent 100%)',
+          }}
+        />
+        {/* Edge gradient blending */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F7F9F5] via-transparent to-[#F7F9F5]" />
       </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center flex-grow justify-center my-auto">
+        {/* Expanded Grand Hero Content */}
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          {/* Primary Headline: Expanded scale, strict 2 font colors in title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-[74px] font-extrabold tracking-tight text-[#11201D] leading-[1.08] mb-8 text-center"
+          >
+            Cultivating Africa's future, using{' '}
+            <span className="text-[#1A532E]">
+              space technology
+            </span>
+          </motion.h1>
+
+          {/* Subhead narrative: Expanded scale with secondary font color */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.16 }}
+            className="text-lg sm:text-xl md:text-2xl sm:leading-relaxed text-[#475B55] mb-12 font-normal max-w-3xl text-center"
+          >
+            TerraSat Impact turns satellite Earth observation and local ground truth into verifiable action — from rapid flood warnings reaching informal settlements via feature phones, to farm-level audit dossiers keeping East African coffee and tea exports compliant.
+          </motion.p>
+
+          {/* Primary Action Buttons: Generously sized */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.24 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          >
+            <Button
+              type="button"
+              variant="default"
+              size="default"
+              onClick={onRequestDemo}
+              className="w-full sm:w-auto rounded-full bg-[#EAF5EC] hover:bg-[#D8EBD9] border border-[#BCDDC3] text-[#1A532E] font-headline font-bold text-sm sm:text-base px-8 py-3.5 sm:px-9 sm:py-4 shadow-sm gap-2 transition-all cursor-pointer"
+            >
+              <span>Request Technical Walkthrough</span>
+              <ArrowUpRight className="w-4 h-4 text-[#1A532E]" />
+            </Button>
+
+            <Button
+              asChild
+              variant="outline"
+              size="default"
+              className="w-full sm:w-auto rounded-full border-[#D8DFD5] bg-white hover:bg-[#F2F5EF] text-[#11201D] text-sm sm:text-base font-medium px-7 py-3.5 sm:px-8 sm:py-4 shadow-xs gap-2 transition-all cursor-pointer"
+            >
+              <a href="#solutions">
+                <span>Explore Solutions</span>
+                <ArrowDown className="w-4 h-4 text-[#11201D]" />
+              </a>
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Interactive Scroll Animator */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="relative z-20 pt-6 pb-2 sm:pt-10 flex flex-col items-center"
+      >
+        <a
+          href="#solutions"
+          className="flex flex-col items-center gap-2 group cursor-pointer text-[#475B55] hover:text-[#1A532E] transition-colors focus:outline-none"
+          aria-label="Scroll to explore Solutions"
+        >
+          <span className="text-[10px] font-mono tracking-[0.22em] uppercase font-semibold text-[#475B55] group-hover:text-[#1A532E] transition-colors">
+            Scroll to Explore
+          </span>
+
+          {/* Mouse capsule with animated scroll dot */}
+          <div className="w-5 h-8.5 rounded-full border-2 border-[#1A532E]/35 group-hover:border-[#1A532E] transition-colors flex items-start justify-center p-1 bg-white/70 backdrop-blur-xs shadow-2xs">
+            <motion.div
+              animate={{
+                y: [0, 13, 0],
+                opacity: [0.9, 1, 0.3],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.8,
+                ease: 'easeInOut',
+              }}
+              className="w-1.5 h-1.5 rounded-full bg-[#1A532E]"
+            />
+          </div>
+
+          <motion.div
+            animate={{ y: [0, 3, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          >
+            <ChevronDown className="w-4 h-4 text-[#1A532E]/70 group-hover:text-[#1A532E] transition-colors" />
+          </motion.div>
+        </a>
+      </motion.div>
     </section>
   );
 };

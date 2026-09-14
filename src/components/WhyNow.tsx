@@ -1,5 +1,8 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
+import { Button } from '@/src/components/ui/button';
 
 export const WhyNow: React.FC = () => {
   return (
@@ -7,9 +10,11 @@ export const WhyNow: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#CFF4A7] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#CFF4A7]" />
-            <span>Macro Context &amp; Regulatory Drivers</span>
+          <div className="mb-3">
+            <Badge variant="default" className="text-xs font-semibold uppercase tracking-wider py-1 px-3 gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#11201D]" />
+              <span>Macro Context &amp; Regulatory Drivers</span>
+            </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight mb-4">
             Why Continuous Agri-MRV Cannot Wait
@@ -23,10 +28,12 @@ export const WhyNow: React.FC = () => {
         {/* 3 Cited Sourced Statistics with Exact Attributions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Stat 1: Continental Agribusiness Footprint */}
-          <div className="bg-[#152522] border border-[#2B4543] p-8 rounded-sm flex flex-col justify-between hover:border-[#CFF4A7]/30 transition-colors">
+          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] mb-4">
-                Economic Scale
+              <div className="mb-4">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                  Economic Scale
+                </Badge>
               </div>
               <div className="font-headline font-bold text-4xl sm:text-5xl text-[#CFF4A7] tracking-tight tabular-nums mb-3">
                 25% <span className="text-2xl text-white font-normal">GDP</span>
@@ -45,13 +52,15 @@ export const WhyNow: React.FC = () => {
               </span>
               <ExternalLink className="w-3.5 h-3.5 text-[#A4B8B2]" />
             </div>
-          </div>
+          </Card>
 
           {/* Stat 2: Kenya Horticultural Trade Volume */}
-          <div className="bg-[#152522] border border-[#2B4543] p-8 rounded-sm flex flex-col justify-between hover:border-[#CFF4A7]/30 transition-colors">
+          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] mb-4">
-                Kenyan Horticultural Exports (2024)
+              <div className="mb-4">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                  Kenyan Horticultural Exports (2024)
+                </Badge>
               </div>
               <div className="font-headline font-bold text-4xl sm:text-5xl text-[#CFF4A7] tracking-tight tabular-nums mb-3">
                 KES 136.6B
@@ -70,13 +79,15 @@ export const WhyNow: React.FC = () => {
               </span>
               <ExternalLink className="w-3.5 h-3.5 text-[#A4B8B2]" />
             </div>
-          </div>
+          </Card>
 
           {/* Stat 3: EUDR Regulatory Enforcement Deadline */}
-          <div className="bg-[#152522] border border-[#2B4543] p-8 rounded-sm flex flex-col justify-between hover:border-[#CFF4A7]/30 transition-colors">
+          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] mb-4">
-                Regulatory Enforcement
+              <div className="mb-4">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                  Regulatory Enforcement
+                </Badge>
               </div>
               <div className="font-headline font-bold text-3xl sm:text-4xl text-[#CFF4A7] tracking-tight tabular-nums mb-3">
                 30 Dec 2026
@@ -95,21 +106,25 @@ export const WhyNow: React.FC = () => {
               </span>
               <ExternalLink className="w-3.5 h-3.5 text-[#A4B8B2]" />
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* Regulatory takeaway footnote */}
-        <div className="mt-10 p-5 rounded-sm bg-[#152522]/60 border border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <Card className="mt-10 p-5 rounded-xl bg-[#152522]/80 border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white">
           <p className="text-xs sm:text-sm text-[#D6E3DE]">
             <span className="text-[#CFF4A7] font-semibold">The consequence of inaction:</span> Exporters without plot-level geolocation and continuous vegetative evidence face immediate border rejection once regulatory cutoffs take effect.
           </p>
-          <a
-            href="#contact"
-            className="text-xs font-mono font-medium text-[#CFF4A7] hover:underline whitespace-nowrap"
+          <Button
+            asChild
+            variant="ghost"
+            className="text-xs font-mono font-medium text-[#CFF4A7] hover:text-[#CFF4A7] hover:bg-[#1D3130] whitespace-nowrap px-3 py-1.5 h-auto gap-1.5"
           >
-            Prepare your portfolio for EUDR →
-          </a>
-        </div>
+            <a href="#contact">
+              <span>Prepare your portfolio for EUDR</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </Button>
+        </Card>
       </div>
     </section>
   );

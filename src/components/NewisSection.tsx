@@ -1,6 +1,10 @@
 import React from 'react';
-import { ArrowUpRight, CheckCircle2, Clock, AlertTriangle, ShieldCheck, MapPin, Smartphone, Waves, Navigation, Camera, Droplets } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Clock, AlertTriangle, ShieldCheck, MapPin } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
+import { Card } from '@/src/components/ui/card';
+import { NewisSystemShowcase } from './NewisSystemShowcase';
 
 interface NewisSectionProps {
   onRequestDemo: () => void;
@@ -27,9 +31,11 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
         {/* Product Badge & Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <Reveal className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-              <Waves className="w-3.5 h-3.5" />
-              <span>Product 02 of 02 · NEWIS</span>
+            <div className="mb-4">
+              <Badge variant="outline" className="bg-[#38BDF8]/15 text-[#38BDF8] border-[#38BDF8]/30 text-xs font-mono uppercase tracking-wider py-1 px-3 gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
+                <span>Product 02 of 02 · NEWIS</span>
+              </Badge>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
               Turning flood warnings into action, ward by ward.
@@ -40,14 +46,16 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
           </Reveal>
 
           <Reveal delay={0.15} className="flex items-center gap-3">
-            <button
+            <Button
               type="button"
+              variant="default"
+              size="lg"
               onClick={onRequestDemo}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#38BDF8] text-[#11201D] text-xs font-headline font-bold hover:bg-[#7dd3fc] transition-all shadow-md"
+              className="rounded-full bg-[#38BDF8] hover:bg-[#7dd3fc] text-[#11201D] font-headline font-bold text-xs gap-2 shadow-md"
             >
               <span>Request NEWIS Pilot</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+            </Button>
           </Reveal>
         </div>
 
@@ -119,93 +127,114 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {wards.map((ward) => (
-                  <span key={ward} className="px-2.5 py-1 rounded-full bg-[#1A312D] border border-[#2B4543] text-[11px] font-mono text-[#CFF4A7]">
+                  <Badge key={ward} variant="default" className="text-[11px] font-mono py-0.5 px-2.5 bg-[#1A312D] border-[#2B4543] text-[#CFF4A7]">
                     {ward}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
           </Reveal>
         </div>
 
-        {/* 4-Stage Operational Cycle */}
-        <div className="mb-16">
+        {/* Real Operational System Showcase: Screenshots & Interactive Simulators */}
+        <Reveal>
+          <NewisSystemShowcase />
+        </Reveal>
+
+        {/* 4-Stage Operational Cycle with Blended Whitish Background */}
+        <div className="mb-16 p-8 sm:p-10 rounded-3xl bg-[#F8FAF5] text-[#12201D] border border-[#D8DFD5] shadow-sm">
           <div className="mb-8">
-            <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-2 font-semibold">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#0284C7] mb-2 font-semibold">
               The 4-Stage Operational Cycle
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#12201D]">
               Covering the full disaster lifecycle
             </h3>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1: WARN */}
-            <Reveal className="p-6 rounded-3xl bg-[#162926] border border-[#2B4543] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-[#38BDF8] font-bold">01 · WARN</span>
-                  <Smartphone className="w-5 h-5 text-[#38BDF8]" />
+            <Reveal className="h-full">
+              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 01</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                      WARN
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-[#11201D] mb-2">Register &amp; Alert</h4>
+                  <p className="text-xs sm:text-sm text-[#475B55] leading-relaxed">
+                    Residents register by ward and preferred language via USSD/SMS keyword, or via Community Health Worker bulk onboarding. Geo-targeted alerts dispatch immediately.
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">Register &amp; Alert</h4>
-                <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed">
-                  Residents register by ward and preferred language via USSD/SMS keyword, or via Community Health Worker bulk onboarding. Geo-targeted alerts dispatch immediately.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#253E3D] text-[11px] font-mono text-[#38BDF8]">
-                Ward &amp; Polygon Dispatch
-              </div>
+                <div className="mt-4 pt-3 border-t border-[#E8ECE4] text-[11px] font-mono text-[#1A532E] font-medium">
+                  Ward &amp; Polygon Dispatch
+                </div>
+              </Card>
             </Reveal>
 
             {/* Step 2: GUIDE */}
-            <Reveal delay={0.1} className="p-6 rounded-3xl bg-[#162926] border border-[#2B4543] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-[#CFF4A7] font-bold">02 · GUIDE</span>
-                  <Navigation className="w-5 h-5 text-[#CFF4A7]" />
+            <Reveal delay={0.1} className="h-full">
+              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 02</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                      GUIDE
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-[#11201D] mb-2">Route to Safety</h4>
+                  <p className="text-xs sm:text-sm text-[#475B55] leading-relaxed">
+                    A satellite flood grid is joined with open amenity points (schools, churches, clinics). Each alert dynamically guides residents to the nearest confirmed safe venue.
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">Route to Safety</h4>
-                <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed">
-                  A satellite flood grid is joined with open amenity points (schools, churches, clinics). Each alert dynamically guides residents to the nearest confirmed safe venue.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#253E3D] text-[11px] font-mono text-[#CFF4A7]">
-                Amenity Safe-Space Routing
-              </div>
+                <div className="mt-4 pt-3 border-t border-[#E8ECE4] text-[11px] font-mono text-[#1A532E] font-medium">
+                  Amenity Safe-Space Routing
+                </div>
+              </Card>
             </Reveal>
 
             {/* Step 3: ACT */}
-            <Reveal delay={0.2} className="p-6 rounded-3xl bg-[#162926] border border-[#2B4543] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-[#F59E0B] font-bold">03 · ACT</span>
-                  <Camera className="w-5 h-5 text-[#F59E0B]" />
+            <Reveal delay={0.2} className="h-full">
+              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 03</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                      ACT
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-[#11201D] mb-2">Coordinate Response</h4>
+                  <p className="text-xs sm:text-sm text-[#475B55] leading-relaxed">
+                    Drainage clearing and safe-space checks run through a unified task queue for Community Health Workers and youth groups, backed by before/after photo verification.
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">Coordinate Response</h4>
-                <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed">
-                  Drainage clearing and safe-space checks run through a unified task queue for Community Health Workers and youth groups, backed by before/after photo verification.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#253E3D] text-[11px] font-mono text-[#F59E0B]">
-                Photo-Verified Task Queue
-              </div>
+                <div className="mt-4 pt-3 border-t border-[#E8ECE4] text-[11px] font-mono text-[#1A532E] font-medium">
+                  Photo-Verified Task Queue
+                </div>
+              </Card>
             </Reveal>
 
             {/* Step 4: PROTECT */}
-            <Reveal delay={0.3} className="p-6 rounded-3xl bg-[#162926] border border-[#2B4543] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-[#38BDF8] font-bold">04 · PROTECT</span>
-                  <Droplets className="w-5 h-5 text-[#38BDF8]" />
+            <Reveal delay={0.3} className="h-full">
+              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 04</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                      PROTECT
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-[#11201D] mb-2">Guard Public Health</h4>
+                  <p className="text-xs sm:text-sm text-[#475B55] leading-relaxed">
+                    The Waterborne Disease Risk Index (WDRI) tracks contamination that peaks days after waters recede — sending preventive advisories for cholera and water sanitation.
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">Guard Public Health</h4>
-                <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed">
-                  The Waterborne Disease Risk Index (WDRI) tracks contamination that peaks days after waters recede — sending preventive advisories for cholera and water sanitation.
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#253E3D] text-[11px] font-mono text-[#38BDF8]">
-                Post-Flood WDRI Monitoring
-              </div>
+                <div className="mt-4 pt-3 border-t border-[#E8ECE4] text-[11px] font-mono text-[#1A532E] font-medium">
+                  Post-Flood WDRI Monitoring
+                </div>
+              </Card>
             </Reveal>
           </div>
         </div>
@@ -215,10 +244,10 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
           {/* Live Now */}
           <Reveal className="p-7 rounded-3xl bg-[#162926] border border-[#14B8A6]/40">
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#14B8A6] animate-pulse" />
-              <span className="text-xs font-mono uppercase tracking-wider text-[#14B8A6] font-bold">
-                Platform Status · Live Now
-              </span>
+              <Badge variant="verified" className="text-xs font-mono uppercase tracking-wider font-bold py-1 px-3 gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
+                <span>Platform Status · Live Now</span>
+              </Badge>
             </div>
             <ul className="space-y-3 text-sm text-[#D6E3DE]">
               {[
@@ -239,10 +268,10 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
           {/* Coming Next */}
           <Reveal delay={0.15} className="p-7 rounded-3xl bg-[#162926] border border-[#F59E0B]/40">
             <div className="flex items-center gap-2 mb-4">
-              <Clock className="w-4 h-4 text-[#F59E0B]" />
-              <span className="text-xs font-mono uppercase tracking-wider text-[#F59E0B] font-bold">
-                Platform Status · Coming Next
-              </span>
+              <Badge variant="warning" className="text-xs font-mono uppercase tracking-wider font-bold py-1 px-3 gap-2">
+                <Clock className="w-4 h-4 text-[#F59E0B]" />
+                <span>Platform Status · Coming Next</span>
+              </Badge>
             </div>
             <ul className="space-y-3 text-sm text-[#D6E3DE]">
               {[

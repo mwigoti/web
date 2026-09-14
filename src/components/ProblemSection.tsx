@@ -1,4 +1,6 @@
 import React from 'react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const ProblemSection: React.FC = () => {
   const gaps = [
@@ -37,9 +39,11 @@ export const ProblemSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#475B55] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#1D3130]" />
-            <span>The Monitoring Deficit</span>
+          <div className="mb-3">
+            <Badge variant="outline" className="text-xs font-semibold uppercase tracking-wider text-[#475B55] border-[#D8DFD5] bg-[#EEF2EA] gap-2 py-1 px-3">
+              <span className="w-2 h-2 rounded-full bg-[#1D3130]" />
+              <span>The Monitoring Deficit</span>
+            </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D3130] leading-tight mb-5">
             Dispersed agricultural portfolios cannot be monitored through periodic physical visits alone.
@@ -54,15 +58,15 @@ export const ProblemSection: React.FC = () => {
         {/* 2x2 Clean Structural Grid (No Icon Circles, Restrained Tabular Figures) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {gaps.map((gap) => (
-            <div
+            <Card
               key={gap.num}
-              className="bg-white border border-[#E3E7DF] p-8 rounded-sm shadow-none flex flex-col justify-between transition-all hover:border-[#1D3130]/30"
+              className="bg-white border-[#E3E7DF] p-8 rounded-2xl shadow-xs flex flex-col justify-between transition-all hover:border-[#1D3130]/30"
             >
               <div>
                 <div className="flex items-baseline justify-between border-b border-[#F0F2EB] pb-4 mb-5">
-                  <span className="font-headline text-sm font-bold tabular-nums text-[#475B55]">
+                  <Badge variant="secondary" className="font-headline text-xs font-bold tabular-nums text-[#1D3130] bg-[#EEF2EA] border-[#D8DFD5]">
                     GAP {gap.num}
-                  </span>
+                  </Badge>
                   <span className="text-xs text-[#475B55] tracking-wide uppercase font-medium">
                     MRV Risk Vector
                   </span>
@@ -83,14 +87,14 @@ export const ProblemSection: React.FC = () => {
                   {gap.impact}
                 </span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* Supporting Context Callout Strip */}
-        <div className="mt-12 bg-white border border-[#E3E7DF] p-6 rounded-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <Card className="mt-12 bg-white border-[#E3E7DF] p-6 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-xs">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-sm bg-[#F7F8F3] border border-[#E3E7DF] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-[#F7F8F3] border border-[#E3E7DF] flex items-center justify-center shrink-0">
               <span className="font-headline font-bold text-sm text-[#1D3130]">VS</span>
             </div>
             <div>
@@ -102,10 +106,10 @@ export const ProblemSection: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="text-xs font-medium text-[#1D3130] bg-[#CFF4A7]/30 px-4 py-2 rounded-sm border border-[#CFF4A7]">
+          <Badge variant="default" className="text-xs font-medium text-[#1D3130] bg-[#CFF4A7] hover:bg-[#CFF4A7] px-4 py-2 rounded-lg border border-[#BDE891] shrink-0">
             TerraFarm solution: Target ground agents exclusively where deviations are flagged.
-          </div>
-        </div>
+          </Badge>
+        </Card>
       </div>
     </section>
   );

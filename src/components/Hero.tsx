@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowDown, ArrowUpRight, Sprout } from 'lucide-react';
 import { motion } from 'motion/react';
 import heroImage from '../assets/images/hero_farmer_1788884199011.jpg';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
 
 interface HeroProps {
   onRequestDemo: () => void;
@@ -45,10 +47,12 @@ export const Hero: React.FC<HeroProps> = ({ onRequestDemo }) => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A312D]/90 border border-[#CFF4A7]/30 text-xs font-semibold font-mono uppercase tracking-wider mb-6 text-[#CFF4A7] shadow-sm backdrop-blur-sm"
+          className="mb-6 inline-block"
         >
-          <Sprout className="w-3.5 h-3.5 text-[#CFF4A7]" />
-          <span>Product 01 of 02 · Terra Farm (Agricultural MRV)</span>
+          <Badge variant="default" className="text-xs font-mono uppercase tracking-wider py-1.5 px-4 backdrop-blur-sm">
+            <Sprout className="w-3.5 h-3.5 mr-1" />
+            <span>Product 01 of 02 · Terra Farm (Agricultural MRV)</span>
+          </Badge>
         </motion.div>
 
         {/* Headline built directly from positioning statement */}
@@ -69,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ onRequestDemo }) => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="text-base sm:text-lg text-[#E7EFE5]/85 max-w-2xl sm:mx-auto leading-relaxed font-normal mb-10"
+          className="text-base sm:text-lg text-[#D6E3DE] max-w-2xl sm:mx-auto leading-relaxed font-normal mb-10"
         >
           Continuous Earth observation paired with targeted agronomic action. Verify EUDR compliance, eliminate $140/farm manual survey penalties, and protect export livelihoods.
         </motion.p>
@@ -81,23 +85,29 @@ export const Hero: React.FC<HeroProps> = ({ onRequestDemo }) => {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4"
         >
-          <button
+          <Button
             id="hero-request-demo-cta"
             type="button"
+            variant="default"
+            size="lg"
             onClick={onRequestDemo}
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#CFF4A7] text-[#1D3130] font-headline font-bold text-sm hover:bg-[#bce68f] active:scale-[0.98] transition-all cursor-pointer shadow-md hover:shadow-lg"
+            className="rounded-full shadow-md hover:shadow-lg font-bold text-sm gap-2"
           >
             <span>Request Portfolio Pilot</span>
             <ArrowUpRight className="w-4 h-4" />
-          </button>
+          </Button>
 
-          <a
-            href="#how-it-works"
-            className="inline-flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-wider text-[#E7EFE5] hover:text-[#CFF4A7] transition-all py-3.5 px-6 border border-[#2B4543] rounded-full bg-[#152522]/80 hover:bg-[#152522] hover:border-[#CFF4A7]/40 shadow-sm"
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="rounded-full text-xs font-mono uppercase tracking-wider bg-[#152522]/80 border-[#2B4543] hover:border-[#CFF4A7]/40 text-[#D6E3DE] gap-2"
           >
-            <span>Operational Cycle</span>
-            <ArrowDown className="w-3.5 h-3.5" />
-          </a>
+            <a href="#how-it-works">
+              <span>Operational Cycle</span>
+              <ArrowDown className="w-3.5 h-3.5" />
+            </a>
+          </Button>
         </motion.div>
       </div>
     </section>

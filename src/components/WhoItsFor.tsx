@@ -1,5 +1,7 @@
 import React from 'react';
 import { Building2, Users } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const WhoItsFor: React.FC = () => {
   const buyers = [
@@ -73,9 +75,11 @@ export const WhoItsFor: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#475B55] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#1D3130]" />
-            <span>Stakeholder Alignment</span>
+          <div className="mb-3">
+            <Badge variant="outline" className="text-xs font-semibold uppercase tracking-wider text-[#475B55] border-[#D8DFD5] bg-[#EEF2EA] gap-2 py-1 px-3">
+              <span className="w-2 h-2 rounded-full bg-[#1D3130]" />
+              <span>Stakeholder Alignment</span>
+            </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D3130] leading-tight mb-4">
             Built for Commercial Risk Holders. Engineered for Field Practitioners.
@@ -89,10 +93,10 @@ export const WhoItsFor: React.FC = () => {
         {/* Two-Column Asymmetric Structure */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Column A: Commercial Buyers ("Who Pays") */}
-          <div className="bg-white border border-[#E3E7DF] p-8 rounded-sm shadow-none">
+          <Card className="bg-white border-[#E3E7DF] p-8 rounded-2xl shadow-sm">
             <div className="flex items-center justify-between border-b border-[#E3E7DF] pb-5 mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-sm bg-[#1D3130] text-[#CFF4A7] flex items-center justify-center">
+                <div className="w-9 h-9 rounded-lg bg-[#1D3130] text-[#CFF4A7] flex items-center justify-center shadow-xs">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
@@ -102,9 +106,9 @@ export const WhoItsFor: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <span className="text-xs font-mono px-2.5 py-1 rounded bg-[#F7F8F3] text-[#1D3130] border border-[#E3E7DF]">
+              <Badge variant="outline" className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#F7F8F3] text-[#1D3130] border-[#E3E7DF]">
                 Portfolio Value
-              </span>
+              </Badge>
             </div>
 
             <div className="space-y-6 divide-y divide-[#F0F2EB]">
@@ -123,13 +127,13 @@ export const WhoItsFor: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
 
           {/* Column B: Operational Users ("Who Uses It") */}
-          <div className="bg-white border border-[#E3E7DF] p-8 rounded-sm shadow-none">
+          <Card className="bg-white border-[#E3E7DF] p-8 rounded-2xl shadow-sm">
             <div className="flex items-center justify-between border-b border-[#E3E7DF] pb-5 mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-sm bg-[#CFF4A7] text-[#1D3130] flex items-center justify-center">
+                <div className="w-9 h-9 rounded-lg bg-[#CFF4A7] text-[#1D3130] flex items-center justify-center shadow-xs">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
@@ -139,9 +143,9 @@ export const WhoItsFor: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <span className="text-xs font-mono px-2.5 py-1 rounded bg-[#F7F8F3] text-[#1D3130] border border-[#E3E7DF]">
+              <Badge variant="outline" className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#F7F8F3] text-[#1D3130] border-[#E3E7DF]">
                 Operational Interface
-              </span>
+              </Badge>
             </div>
 
             <div className="space-y-6 divide-y divide-[#F0F2EB]">
@@ -160,7 +164,7 @@ export const WhoItsFor: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </section>

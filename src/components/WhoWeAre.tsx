@@ -1,6 +1,8 @@
 import React from 'react';
-import { Mail, Linkedin, Compass, Eye, ShieldCheck, Satellite } from 'lucide-react';
+import { Mail, Linkedin, Compass, Eye, Satellite } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const WhoWeAre: React.FC = () => {
   const teamMembers = [
@@ -40,9 +42,11 @@ export const WhoWeAre: React.FC = () => {
         {/* Intro */}
         <div className="max-w-3xl mb-16">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CFF4A7]/15 text-[#CFF4A7] border border-[#CFF4A7]/30 text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CFF4A7]" />
-              <span>Who We Are</span>
+            <div className="mb-4">
+              <Badge variant="default" className="text-xs font-semibold font-mono uppercase tracking-wider py-1 px-3 gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#11201D]" />
+                <span>Who We Are</span>
+              </Badge>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-5">
               The people building TerraSat.
@@ -55,36 +59,40 @@ export const WhoWeAre: React.FC = () => {
 
         {/* Mission & Vision Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          <Reveal className="p-8 rounded-3xl bg-[#162A27] border border-[#2B4543] relative overflow-hidden">
-            <div className="w-10 h-10 rounded-2xl bg-[#CFF4A7]/15 border border-[#CFF4A7]/30 flex items-center justify-center text-[#CFF4A7] mb-5">
-              <Compass className="w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-              Our Mission
-            </h3>
-            <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
-              To turn Earth observation and IoT data into practical, community-ready action — giving households, cooperatives, and institutions across Africa the risk intelligence they need before disaster strikes, not after.
-            </p>
+          <Reveal>
+            <Card className="p-8 rounded-3xl bg-[#162A27] border-[#2B4543] text-white relative overflow-hidden h-full">
+              <span className="inline-block text-xs font-mono font-bold text-[#CFF4A7] uppercase tracking-wider mb-4">
+                Pillar 01 · Purpose
+              </span>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Our Mission
+              </h3>
+              <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
+                To turn Earth observation and IoT data into practical, community-ready action — giving households, cooperatives, and institutions across Africa the risk intelligence they need before disaster strikes, not after.
+              </p>
+            </Card>
           </Reveal>
 
-          <Reveal delay={0.1} className="p-8 rounded-3xl bg-[#162A27] border border-[#2B4543] relative overflow-hidden">
-            <div className="w-10 h-10 rounded-2xl bg-[#38BDF8]/15 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] mb-5">
-              <Eye className="w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-              Our Vision
-            </h3>
-            <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
-              A future where every flood-prone community and every farm has access to verifiable, satellite-powered intelligence — starting in Kenya and Rwanda, and built to scale across the continent.
-            </p>
+          <Reveal delay={0.1}>
+            <Card className="p-8 rounded-3xl bg-[#162A27] border-[#2B4543] text-white relative overflow-hidden h-full">
+              <span className="inline-block text-xs font-mono font-bold text-[#CFF4A7] uppercase tracking-wider mb-4">
+                Pillar 02 · Horizon
+              </span>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Our Vision
+              </h3>
+              <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
+                A future where every flood-prone community and every farm has access to verifiable, satellite-powered intelligence — starting in Kenya and Rwanda, and built to scale across the continent.
+              </p>
+            </Card>
           </Reveal>
         </div>
 
         {/* Team Grid */}
         <div className="mb-8">
-          <div className="text-xs font-mono uppercase tracking-wider text-[#CFF4A7] mb-2 font-semibold">
+          <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#CFF4A7] border-[#CFF4A7]/30 mb-3 py-1 px-3 font-semibold">
             Leadership &amp; Engineering Team
-          </div>
+          </Badge>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-10">
             Pioneering space tech for African resilience
           </h3>
@@ -92,46 +100,48 @@ export const WhoWeAre: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {teamMembers.map((member, idx) => (
-            <Reveal key={member.name} delay={idx * 0.1} className="p-8 rounded-3xl bg-[#162926] border border-[#2B4543] flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-all shadow-md">
-              <div>
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div>
-                    <h4 className="text-xl font-bold text-white">{member.name}</h4>
-                    <div className="text-xs font-mono text-[#CFF4A7] font-semibold mt-0.5">
-                      {member.role}
+            <Reveal key={member.name} delay={idx * 0.1}>
+              <Card className="p-8 rounded-3xl bg-[#162926] border-[#2B4543] text-white flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-all shadow-md h-full">
+                <div>
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <div>
+                      <h4 className="text-xl font-bold text-white">{member.name}</h4>
+                      <div className="text-xs font-mono text-[#CFF4A7] font-semibold mt-0.5">
+                        {member.role}
+                      </div>
+                    </div>
+                    <div className="w-9 h-9 rounded-full bg-[#1A312D] border border-[#2B4543] flex items-center justify-center text-[#CFF4A7]">
+                      <Satellite className="w-4 h-4" />
                     </div>
                   </div>
-                  <div className="w-9 h-9 rounded-full bg-[#1A312D] border border-[#2B4543] flex items-center justify-center text-[#CFF4A7]">
-                    <Satellite className="w-4 h-4" />
-                  </div>
+                  <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed mt-4 mb-6">
+                    {member.bio}
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed mt-4 mb-6">
-                  {member.bio}
-                </p>
-              </div>
 
-              <div className="pt-4 border-t border-[#253E3D] flex flex-wrap items-center gap-4 text-xs font-mono">
-                {member.email && (
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#CFF4A7] transition-colors"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-[#CFF4A7]" />
-                    <span>{member.email}</span>
-                  </a>
-                )}
-                {member.linkedin && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#38BDF8] transition-colors"
-                  >
-                    <Linkedin className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>LinkedIn</span>
-                  </a>
-                )}
-              </div>
+                <div className="pt-4 border-t border-[#253E3D] flex flex-wrap items-center gap-4 text-xs font-mono">
+                  {member.email && (
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#CFF4A7] transition-colors"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#CFF4A7]" />
+                      <span>{member.email}</span>
+                    </a>
+                  )}
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#38BDF8] transition-colors"
+                    >
+                      <Linkedin className="w-3.5 h-3.5 text-[#38BDF8]" />
+                      <span>LinkedIn</span>
+                    </a>
+                  )}
+                </div>
+              </Card>
             </Reveal>
           ))}
         </div>

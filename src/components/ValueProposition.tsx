@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/src/components/ui/badge';
+import { Card } from '@/src/components/ui/card';
 
 export const ValueProposition: React.FC = () => {
   const sequence = [
@@ -29,9 +31,9 @@ export const ValueProposition: React.FC = () => {
 
         {/* Caption over Breather Band */}
         <div className="absolute bottom-8 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-block px-3 py-1.5 rounded-sm bg-[#152522]/85 border border-[#2B4543] text-xs text-[#E7EFE5] backdrop-blur-sm">
-            <span className="text-[#CFF4A7] font-medium">Contour agroforestry observation:</span> 100% boundary continuity across multi-hectare smallholder clusters.
-          </div>
+          <Badge variant="outline" className="px-3.5 py-1.5 rounded-lg bg-[#152522]/90 border-[#2B4543] text-xs text-[#E7EFE5] backdrop-blur-sm gap-1.5 font-normal">
+            <span className="text-[#CFF4A7] font-semibold">Contour agroforestry observation:</span> 100% boundary continuity across multi-hectare smallholder clusters.
+          </Badge>
         </div>
       </div>
 
@@ -39,9 +41,11 @@ export const ValueProposition: React.FC = () => {
       <div className="bg-[#1D3130] text-white py-20 border-b border-[#253E3D]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Eyebrow */}
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#CFF4A7] mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#CFF4A7]" />
-            <span>The Value Proposition</span>
+          <div className="mb-4">
+            <Badge variant="default" className="text-xs font-semibold uppercase tracking-wider py-1 px-3 gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#11201D]" />
+              <span>The Value Proposition</span>
+            </Badge>
           </div>
 
           {/* Large Core Statement */}
@@ -51,29 +55,32 @@ export const ValueProposition: React.FC = () => {
           </h2>
 
           {/* The Operational Flow Callout (Horizontal sequence) */}
-          <div className="bg-[#152522] border border-[#2B4543] p-6 sm:p-8 rounded-sm mb-10 overflow-x-auto">
+          <Card className="bg-[#152522] border-[#2B4543] p-6 sm:p-8 rounded-xl mb-10 overflow-x-auto text-white">
             <p className="text-xs font-mono uppercase text-[#A4B8B2] tracking-wider mb-4">
               Operational Closed Loop:
             </p>
             <div className="flex items-center gap-3 text-sm sm:text-base font-semibold text-white whitespace-nowrap">
               {sequence.map((item, index) => (
                 <React.Fragment key={item}>
-                  <span className={`px-3 py-1.5 rounded-sm border ${
-                    index === sequence.length - 1
-                      ? 'bg-[#CFF4A7] text-[#1D3130] border-[#CFF4A7] font-bold'
-                      : index === 0
-                      ? 'bg-[#1D3130] text-white border-[#2B4543]'
-                      : 'bg-[#1D3130]/80 text-[#E7EFE5] border-[#2B4543]'
-                  }`}>
+                  <Badge
+                    variant={index === sequence.length - 1 ? 'default' : 'outline'}
+                    className={`px-3 py-1.5 rounded-lg border text-xs sm:text-sm font-semibold ${
+                      index === sequence.length - 1
+                        ? 'bg-[#CFF4A7] text-[#1D3130] border-[#CFF4A7] font-bold'
+                        : index === 0
+                        ? 'bg-[#1D3130] text-white border-[#2B4543]'
+                        : 'bg-[#1D3130]/80 text-[#E7EFE5] border-[#2B4543]'
+                    }`}
+                  >
                     {item}
-                  </span>
+                  </Badge>
                   {index < sequence.length - 1 && (
                     <ArrowRight className="w-4 h-4 text-[#CFF4A7] shrink-0 opacity-70" />
                   )}
                 </React.Fragment>
               ))}
             </div>
-          </div>
+          </Card>
 
           {/* Two-Column Value Explanation */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -113,7 +120,7 @@ export const ValueProposition: React.FC = () => {
             </div>
 
             {/* Commercial Framing Callout Card */}
-            <div className="lg:col-span-5 bg-[#152522] border-l-2 border-[#CFF4A7] p-6 sm:p-7 rounded-r-sm">
+            <Card className="lg:col-span-5 bg-[#152522] border-l-4 border-l-[#CFF4A7] border-[#2B4543] p-6 sm:p-7 rounded-xl text-white">
               <span className="text-xs uppercase font-mono tracking-wider text-[#CFF4A7] font-semibold block mb-2">
                 Commercial Framing
               </span>
@@ -124,7 +131,7 @@ export const ValueProposition: React.FC = () => {
                 Raw pixels do not pass an audit. TerraFarm transforms satellite, IoT, and ground observation streams
                 into defensible, farm-specific compliance ledgers.
               </p>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

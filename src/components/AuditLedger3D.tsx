@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'motion/react';
 import { ShieldCheck, Satellite, MapPin, Activity, CheckCircle, Sparkles } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
+import { Card } from '@/src/components/ui/card';
 
 interface LedgerLayer {
   id: string;
@@ -155,9 +158,11 @@ export const AuditLedger3D: React.FC = () => {
         {/* Header with Title and Scroll Status Indicator */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <Reveal className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CFF4A7]/15 text-[#CFF4A7] border border-[#CFF4A7]/30 text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#CFF4A7]" />
-              <span>Interactive 3D Multi-Layer Ledger</span>
+            <div className="mb-4">
+              <Badge variant="default" className="text-xs font-mono uppercase tracking-wider py-1 px-3 gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-[#CFF4A7]" />
+                <span>Interactive 3D Multi-Layer Ledger</span>
+              </Badge>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight mb-4">
               Inspect the 4-Layer Verification Slice.
@@ -169,7 +174,7 @@ export const AuditLedger3D: React.FC = () => {
 
           {/* Dynamic Scroll State Indicator */}
           <Reveal delay={0.15} className="flex items-center">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#182C29] border border-[#2B4543] text-xs font-mono text-[#D6E3DE] transition-all">
+            <Badge variant="outline" className="text-xs font-mono py-1.5 px-4 bg-[#182C29] border-[#2B4543] text-[#D6E3DE] gap-2.5">
               <span
                 className={`w-2 h-2 rounded-full transition-all duration-500 ${
                   isInView
@@ -178,7 +183,7 @@ export const AuditLedger3D: React.FC = () => {
                 }`}
               />
               <span>{isInView ? 'Strata Exploded' : 'Strata Condensed'}</span>
-            </div>
+            </Badge>
           </Reveal>
         </div>
 
@@ -336,13 +341,15 @@ export const AuditLedger3D: React.FC = () => {
               {layers.map((l) => {
                 const isSelected = l.id === activeLayerId;
                 return (
-                  <button
+                  <Button
                     key={l.id}
                     type="button"
+                    variant={isSelected ? 'default' : 'outline'}
+                    size="sm"
                     onClick={() => setActiveLayerId(l.id)}
-                    className={`py-2 px-2 rounded-xl text-center border transition-all cursor-pointer ${
+                    className={`h-auto py-2 px-2 flex-col rounded-xl text-center border transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#CFF4A7] text-[#11201D] border-[#CFF4A7] font-bold shadow-md'
+                        ? 'bg-[#CFF4A7] text-[#11201D] border-[#CFF4A7] hover:bg-[#bce68f]'
                         : 'bg-[#192E2B] text-[#D6E3DE] border-[#2B4543] hover:border-[#CFF4A7]/50 hover:bg-[#203834]'
                     }`}
                   >
@@ -350,17 +357,17 @@ export const AuditLedger3D: React.FC = () => {
                     <span className="block text-xs font-headline truncate font-semibold">
                       {l.level === 1 ? 'Cadastre' : l.level === 2 ? 'Baseline' : l.level === 3 ? 'NDVI' : 'EUDR Cert'}
                     </span>
-                  </button>
+                  </Button>
                 );
               })}
             </div>
 
             {/* Main Inspection Card */}
-            <div className="bg-[#182C29] border border-[#2B4543] rounded-3xl p-6 sm:p-7 shadow-xl">
+            <Card className="bg-[#182C29] border-[#2B4543] rounded-3xl p-6 sm:p-7 shadow-xl text-white">
               <div className="flex items-center justify-between mb-3">
-                <span className={`text-[11px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${activeLayer.tagColor}`}>
+                <Badge variant="outline" className={`text-[11px] font-mono font-bold uppercase tracking-wider py-1 px-3 ${activeLayer.tagColor}`}>
                   {activeLayer.tag}
-                </span>
+                </Badge>
                 <span className="text-xs font-mono text-[#A4B8B2]">
                   Stratum 0{activeLayer.level} of 04
                 </span>
@@ -399,7 +406,7 @@ export const AuditLedger3D: React.FC = () => {
                   Ready for Port Customs <CheckCircle className="w-3.5 h-3.5" />
                 </span>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

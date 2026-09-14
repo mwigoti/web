@@ -11,8 +11,8 @@ import { PlatformDeliverables } from './components/PlatformDeliverables';
 import { AuditLedger3D } from './components/AuditLedger3D';
 import { NewisSection } from './components/NewisSection';
 import { FocusAreas } from './components/FocusAreas';
-import { ImpactStandards } from './components/ImpactStandards';
 import { WhoWeAre } from './components/WhoWeAre';
+import { PartnersSection } from './components/PartnersSection';
 import { Footer } from './components/Footer';
 import { DemoModal } from './components/DemoModal';
 
@@ -37,7 +37,7 @@ export default function App() {
         setActiveView('terrafarm');
       } else if (hash.includes('newis')) {
         setActiveView('newis');
-      } else if (hash === '' || hash === '#top' || hash === '#solutions' || hash === '#about' || hash === '#focus-areas' || hash === '#impact' || hash === '#contact') {
+      } else if (hash === '' || hash === '#top' || hash === '#solutions' || hash === '#about' || hash === '#partners' || hash === '#focus-areas' || hash === '#contact') {
         setActiveView('home');
       }
     };
@@ -96,11 +96,11 @@ export default function App() {
             {/* The 6 Focus Areas Across African Geographies */}
             <FocusAreas />
 
-            {/* Impact Standards, Compliance & Ecosystem Stakeholders */}
-            <ImpactStandards />
-
             {/* Who We Are: Mission, Vision, and Leadership Team */}
             <WhoWeAre />
+
+            {/* Partners & Ecosystem Alliances */}
+            <PartnersSection onRequestDemo={handleOpenDemo} />
           </>
         )}
 

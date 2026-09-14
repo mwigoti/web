@@ -2,6 +2,7 @@ import React from 'react';
 import { FileText, Activity, Navigation, CheckCircle, Building2, UserCheck, Landmark } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { Card3D } from './Card3D';
+import { Badge } from '@/src/components/ui/badge';
 
 export const PlatformDeliverables: React.FC = () => {
   const deliverables = [
@@ -58,9 +59,11 @@ export const PlatformDeliverables: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <Reveal className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5F3E7] text-[#1A532E] border border-[#BCDDC3] text-xs font-semibold font-mono uppercase tracking-wider mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D47] animate-pulse" />
-            <span>Auditable Deliverables</span>
+          <div className="mb-4">
+            <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider py-1 px-3 bg-[#E5F3E7] text-[#1A532E] border-[#BCDDC3] gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D47] animate-pulse" />
+              <span>Auditable Deliverables</span>
+            </Badge>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0F1E1B] leading-tight mb-4">
             Auditable outputs for every stage of the value chain.
@@ -83,7 +86,9 @@ export const PlatformDeliverables: React.FC = () => {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-mono text-[#1A532E] bg-[#E5F3E7] px-2.5 py-0.5 rounded-full font-bold border border-[#BCDDC3]">{d.code}</span>
+                      <Badge variant="outline" className="text-xs font-mono text-[#1A532E] bg-[#E5F3E7] px-2.5 py-0.5 rounded-full font-bold border-[#BCDDC3]">
+                        {d.code}
+                      </Badge>
                       <div className="w-8 h-8 rounded-full bg-[#FAFBF8] border border-[#D5DDD7] flex items-center justify-center text-[#1D3130] shadow-xs">
                         <Icon className="w-4 h-4 text-[#1D3130]" />
                       </div>
