@@ -200,7 +200,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                 <Logo size={28} wordmarkColor="white" productSubtitle="Impact Co. · Climate Intelligence" />
               </button>
               <p className="text-sm text-[#D6E3DE] leading-relaxed max-w-sm mb-4">
-                Cultivating Africa's future using space technology. Terraxat (operating as Terrasat Impact) transforms satellite Earth observation and ground truth into continuous MRV and early warning.
+                Cultivating Africa's future using space technology. TerraSat Impact transforms satellite Earth observation and ground truth into continuous MRV and early warning.
               </p>
               <div className="flex flex-col gap-1 text-xs font-mono text-[#A4B8B2]">
                 <span>Headquarters: Nairobi, Kenya</span>
@@ -366,7 +366,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
       {/* Bottom Bar */}
       <div className="py-6 border-t border-[#1C332F] bg-[#0A1412]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A4B8B2]">
-          <p>© {new Date().getFullYear()} Terraxat Impact Co. Ltd. (operating as Terrasat Impact). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TerraSat Impact Co. Limited. All rights reserved.</p>
           <div className="flex items-center gap-6 font-mono text-[11px]">
             <a href="https://terraxat.com" className="text-[#CFF4A7] hover:underline">terraxat.com</a>
             <span className="text-[#A4B8B2]">Nairobi, Kenya</span>

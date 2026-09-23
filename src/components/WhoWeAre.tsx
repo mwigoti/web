@@ -148,38 +148,6 @@ export const WhoWeAre: React.FC = () => {
             </Reveal>
           ))}
         </div>
-
-        {/* Brand & Identity Disambiguation Note (Targeting phonetic variants: Terraxat & Terrasat) */}
-        <Reveal delay={0.25} className="mt-12">
-          <div className="bg-[#152522] border-2 border-[#2B4543] rounded-2xl p-6 sm:p-7 text-white shadow-lg">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#253E3D] pb-4 mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#CFF4A7]/20 border border-[#CFF4A7] flex items-center justify-center text-[#CFF4A7] font-mono text-xs font-bold">
-                  TX
-                </div>
-                <h3 className="text-base font-bold text-white font-headline">
-                  Brand &amp; Entity Identity: Terraxat &amp; Terrasat Impact
-                </h3>
-              </div>
-              <span className="text-xs font-mono text-[#CFF4A7] bg-[#1D3130] px-3 py-1 rounded-full border border-[#2B4543] shrink-0">
-                Official Domain: terraxat.com
-              </span>
-            </div>
-            <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed mb-3">
-              Our registered enterprise brand and primary domain is <strong className="text-white">Terraxat</strong> (
-              <a href="https://terraxat.com" className="text-[#CFF4A7] underline font-semibold">
-                terraxat.com
-              </a>
-              ). Because our mission blends <em>Terra</em> (Earth observation) and <em>Satellite</em> telemetry for economic impact, partners, 
-              international buyers, and media frequently reference us as <strong className="text-white">Terrasat</strong>, <strong className="text-white">Terrasat Impact</strong>, or <strong className="text-white">Terra Sat</strong>.
-            </p>
-            <div className="text-xs font-mono text-[#A4B8B2] flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 border-t border-[#253E3D]">
-              <span><span className="text-[#CFF4A7]">Canonical Entity:</span> Terraxat Impact Co. Ltd.</span>
-              <span><span className="text-[#CFF4A7]">Phonetic Variants:</span> Terrasat · Terrasat Impact · Terra Sat</span>
-              <span><span className="text-[#CFF4A7]">HQ:</span> Nairobi, Kenya</span>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
