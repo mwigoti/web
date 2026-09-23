@@ -148,8 +148,8 @@ export const NewisSystemShowcase: React.FC = () => {
         </p>
       </div>
 
-      {/* Screen Selector Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+      {/* Screen Selector Tabs with smooth horizontal scroll on mobile */}
+      <div className="flex items-center justify-start sm:justify-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none max-w-full">
         {[
           { id: 'map', label: 'Mathare Ward Flood Risk (UFN)', icon: MapIcon },
           { id: 'alerts', label: 'Ward Alert & Shelter Dispatch', icon: AlertTriangle },
@@ -163,7 +163,7 @@ export const NewisSystemShowcase: React.FC = () => {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-mono transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-mono whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                 isActive
                   ? 'bg-[#38BDF8] text-[#11201D] font-bold shadow-md shadow-[#38BDF8]/20'
                   : 'bg-[#182C29] text-[#D6E3DE] hover:bg-[#203935] hover:text-white border border-[#2B4543]'
@@ -177,7 +177,7 @@ export const NewisSystemShowcase: React.FC = () => {
       </div>
 
       {/* Showcase Display Area */}
-      <div className="bg-[#0E1A18] rounded-3xl border border-[#2B4543] p-3 sm:p-6 shadow-2xl overflow-hidden">
+      <div className="bg-[#0E1A18] rounded-3xl border-2 border-[#2B4543] p-3.5 sm:p-6 lg:p-8 shadow-2xl overflow-hidden">
         {/* ================= TAB 1: MATHARE WARD FLOOD RISK (UFN) MAP ================= */}
         {activeTab === 'map' && (
           <motion.div

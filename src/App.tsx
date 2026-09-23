@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { TerraSatHero } from './components/TerraSatHero';
 import { SolutionsHub } from './components/SolutionsHub';
@@ -8,13 +9,15 @@ import { Hero } from './components/Hero';
 import { ImpactSection } from './components/ImpactSection';
 import { HowItWorks } from './components/HowItWorks';
 import { PlatformDeliverables } from './components/PlatformDeliverables';
-import { AuditLedger3D } from './components/AuditLedger3D';
 import { NewisSection } from './components/NewisSection';
 import { FocusAreas } from './components/FocusAreas';
 import { WhoWeAre } from './components/WhoWeAre';
-import { PartnersSection } from './components/PartnersSection';
+import { HeroPartnersCarousel } from './components/HeroPartnersCarousel';
 import { Footer } from './components/Footer';
 import { DemoModal } from './components/DemoModal';
+import { SectionTransition } from './components/SectionTransition';
+import { FarmHealthDashboard } from './components/FarmHealthDashboard';
+import { MobileFieldBar } from './components/MobileFieldBar';
 
 type AppView = 'home' | 'terrafarm' | 'newis';
 
@@ -37,7 +40,15 @@ export default function App() {
         setActiveView('terrafarm');
       } else if (hash.includes('newis')) {
         setActiveView('newis');
-      } else if (hash === '' || hash === '#top' || hash === '#solutions' || hash === '#about' || hash === '#partners' || hash === '#focus-areas' || hash === '#contact') {
+      } else if (
+        hash === '' ||
+        hash === '#top' ||
+        hash === '#solutions' ||
+        hash === '#about' ||
+        hash === '#partners' ||
+        hash === '#focus-areas' ||
+        hash === '#contact'
+      ) {
         setActiveView('home');
       }
     };
@@ -46,25 +57,20 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (view: AppView, targetHash?: string) => {
+  const navigateTo = (view: AppView) => {
     setActiveView(view);
-    if (view === 'terrafarm') {
-      window.history.pushState(null, '', targetHash || '#terra-farm');
+    if (view === 'home') {
+      window.history.pushState(null, '', '#top');
+    } else if (view === 'terrafarm') {
+      window.history.pushState(null, '', '#terra-farm');
     } else if (view === 'newis') {
-      window.history.pushState(null, '', targetHash || '#newis');
-    } else {
-      window.history.pushState(null, '', targetHash || '#top');
+      window.history.pushState(null, '', '#newis');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleOpenDemo = () => {
-    setDemoModalOpen(true);
-  };
-
-  const handleCloseDemo = () => {
-    setDemoModalOpen(false);
-  };
+  const handleOpenDemo = () => setDemoModalOpen(true);
+  const handleCloseDemo = () => setDemoModalOpen(false);
 
   return (
     <div id="top" className="min-h-screen bg-[#11201D] text-white selection:bg-[#CFF4A7] selection:text-[#1D3130] font-body flex flex-col">
@@ -75,78 +81,124 @@ export default function App() {
         onNavigate={navigateTo}
       />
 
-      {/* Main Content Rendered Selectively Based on Active View */}
+      {/* Main Content Rendered with Smooth AnimatePresence Transitions */}
       <main id="main-content" className="flex-grow">
-        {activeView === 'home' && (
-          <>
-            {/* Unified Brand Hero: TerraSat Impact */}
-            <TerraSatHero
-              onRequestDemo={handleOpenDemo}
-              onExploreTerraFarm={() => navigateTo('terrafarm')}
-              onExploreNewis={() => navigateTo('newis')}
-            />
+        <AnimatePresence mode="wait">
+          {activeView === 'home' && (
+            <motion.div
+              key="home-view"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              {/* Unified Brand Hero: TerraSat Impact with Africa relief map */}
+              <TerraSatHero
+                onRequestDemo={handleOpenDemo}
+                onExploreTerraFarm={() => navigateTo('terrafarm')}
+                onExploreNewis={() => navigateTo('newis')}
+              />
 
-            {/* Solutions Hub: Two Frontlines of Climate Risk (Terra Farm + NEWIS with Explore triggers) */}
-            <SolutionsHub
-              onExploreTerraFarm={() => navigateTo('terrafarm')}
-              onExploreNewis={() => navigateTo('newis')}
-              onRequestDemo={handleOpenDemo}
-            />
+              {/* Strategic Partners & Ecosystem Alliances Floating Logo Carousel */}
+              <HeroPartnersCarousel />
 
-            {/* The 6 Focus Areas Across African Geographies */}
-            <FocusAreas />
+              {/* Section Transition Accent: Hero/Partners -> Solutions */}
+              <SectionTransition variant="line" />
 
-            {/* Who We Are: Mission, Vision, and Leadership Team */}
-            <WhoWeAre />
+              {/* Solutions Hub */}
+              <SolutionsHub
+                onExploreTerraFarm={() => navigateTo('terrafarm')}
+                onExploreNewis={() => navigateTo('newis')}
+                onRequestDemo={handleOpenDemo}
+              />
 
-            {/* Partners & Ecosystem Alliances */}
-            <PartnersSection onRequestDemo={handleOpenDemo} />
-          </>
-        )}
+              {/* Section Transition Accent: Solutions -> Focus Areas */}
+              <SectionTransition variant="line" />
 
-        {activeView === 'terrafarm' && (
-          <div className="animate-in fade-in duration-300">
-            {/* Top Product Context Banner with Back button */}
-            <ProductBanner currentProduct="terrafarm" onNavigate={navigateTo} />
+              {/* The Focus Areas */}
+              <FocusAreas />
 
-            {/* Dedicated Terra Farm Product Deep Dive */}
-            <Hero onRequestDemo={handleOpenDemo} />
-            <ImpactSection />
-            <HowItWorks />
-            <PlatformDeliverables />
-            <AuditLedger3D />
+              {/* Smooth Aesthetic Transition: Light Focus Areas -> Deep Charcoal WhoWeAre */}
+              <div
+                aria-hidden="true"
+                className="w-full h-16 bg-gradient-to-b from-[#F2F5EF] to-[#11201D] pointer-events-none"
+              />
 
-            {/* Sibling Cross-Link to NEWIS & Back trigger */}
-            <ProductCrossLink
-              currentProduct="terrafarm"
-              onNavigate={navigateTo}
-              onRequestDemo={handleOpenDemo}
-            />
-          </div>
-        )}
+              {/* Who We Are: Mission, Vision, and Leadership Team */}
+              <WhoWeAre />
+            </motion.div>
+          )}
 
-        {activeView === 'newis' && (
-          <div className="animate-in fade-in duration-300">
-            {/* Top Product Context Banner with Back button */}
-            <ProductBanner currentProduct="newis" onNavigate={navigateTo} />
+          {activeView === 'terrafarm' && (
+            <motion.div
+              key="terrafarm-view"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Top Product Context Banner with Back button */}
+              <ProductBanner currentProduct="terrafarm" onNavigate={navigateTo} />
 
-            {/* Dedicated NEWIS Product Deep Dive */}
-            <NewisSection onRequestDemo={handleOpenDemo} />
+              {/* Dedicated Terra Farm Product Deep Dive */}
+              <Hero onRequestDemo={handleOpenDemo} />
+              <SectionTransition variant="line" />
 
-            {/* Sibling Cross-Link to Terra Farm & Back trigger */}
-            <ProductCrossLink
-              currentProduct="newis"
-              onNavigate={navigateTo}
-              onRequestDemo={handleOpenDemo}
-            />
-          </div>
-        )}
+              {/* Real-Time Field Health Dashboard: KPI Cards & Progressive Disclosure */}
+              <FarmHealthDashboard />
+              <SectionTransition variant="line" />
+
+              <ImpactSection />
+              <SectionTransition variant="line" />
+              <HowItWorks />
+              <SectionTransition variant="line" />
+              <PlatformDeliverables />
+
+              {/* Sibling Cross-Link to NEWIS & Back trigger */}
+              <ProductCrossLink
+                currentProduct="terrafarm"
+                onNavigate={navigateTo}
+                onRequestDemo={handleOpenDemo}
+              />
+            </motion.div>
+          )}
+
+          {activeView === 'newis' && (
+            <motion.div
+              key="newis-view"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Top Product Context Banner with Back button */}
+              <ProductBanner currentProduct="newis" onNavigate={navigateTo} />
+
+              {/* Dedicated NEWIS Product Deep Dive */}
+              <NewisSection onRequestDemo={handleOpenDemo} />
+
+              {/* Sibling Cross-Link to Terra Farm & Back trigger */}
+              <ProductCrossLink
+                currentProduct="newis"
+                onNavigate={navigateTo}
+                onRequestDemo={handleOpenDemo}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
-      {/* Comprehensive 5-Column Closing CTA & Footer */}
-      <Footer onRequestDemo={handleOpenDemo} onNavigate={navigateTo} />
+      {/* Mobile-Friendly Thumb-Zone Field Navigation Bar */}
+      <MobileFieldBar
+        onRequestDemo={handleOpenDemo}
+        activeView={activeView}
+        onNavigate={navigateTo}
+      />
 
-      {/* Unified Demo & Partnership Modal */}
+      {/* 3. Universal TerraSat Impact Footer */}
+      <Footer onNavigate={navigateTo} onRequestDemo={handleOpenDemo} />
+
+      {/* Global Interactive Demo Modal Dialog */}
       <DemoModal isOpen={demoModalOpen} onClose={handleCloseDemo} />
     </div>
   );

@@ -131,12 +131,6 @@ export const PlatformDeliverables: React.FC = () => {
             })}
           </div>
         </Reveal>
-
-        {/* Clean Credibility Footer Strip */}
-        <div className="mt-14 pt-6 border-t border-[#D5DDD7] flex flex-wrap items-center justify-between gap-4 text-xs text-[#2B403B] font-mono">
-          <span>Data Ingestion: Copernicus Sentinel-2 · Planet High-Res · Soil IoT</span>
-          <span className="text-[#1A532E] font-semibold">EUDR Article 9 &amp; 10 Validated</span>
-        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, Sprout } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Sprout, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import heroImage from '../assets/images/hero_farmer_1788884199011.jpg';
 import { Badge } from '@/src/components/ui/badge';
@@ -42,70 +42,76 @@ export const Hero: React.FC<HeroProps> = ({ onRequestDemo }) => {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left sm:text-center">
-        {/* Product Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 inline-block"
-        >
-          <Badge variant="default" className="text-xs font-mono uppercase tracking-wider py-1.5 px-4 backdrop-blur-sm">
-            <Sprout className="w-3.5 h-3.5 mr-1" />
-            <span>Product 01 of 02 · Terra Farm (Agricultural MRV)</span>
-          </Badge>
-        </motion.div>
-
-        {/* Headline built directly from positioning statement */}
+        {/* Clear, MRV & Compliance Inclusion Value Proposition Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="text-3xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.12] mb-6 sm:mx-auto"
+          className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-[1.14] mb-5 sm:mx-auto"
         >
-          Satellite MRV that keeps African smallholders in{' '}
+          Verify compliance and keep smallholders connected to{' '}
           <span className="text-[#CFF4A7] underline decoration-[#CFF4A7]/30 underline-offset-8">
-            global supply chains.
+            global export markets.
           </span>
         </motion.h1>
 
-        {/* Subhead */}
+        {/* Actionable Subhead: satellite imagery + IoT + field records */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="text-base sm:text-lg text-[#D6E3DE] max-w-2xl sm:mx-auto leading-relaxed font-normal mb-10"
+          className="text-base sm:text-lg text-[#D6E3DE] max-w-2xl sm:mx-auto leading-relaxed font-normal mb-8"
         >
-          Continuous Earth observation paired with targeted agronomic action. Verify EUDR compliance, eliminate $140/farm manual survey penalties, and protect export livelihoods.
+          Terra Farm brings together satellite imagery, ground sensors, and verified field records into an automated compliance engine—protecting family farms from exclusion under international deforestation and traceability regulations.
         </motion.p>
 
-        {/* Action Controls */}
+        {/* Simple Trust Points */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-[#CFF4A7] mb-9">
+          <span className="inline-flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-[#CFF4A7]" />
+            Satellite Imagery Verification
+          </span>
+          <span className="text-[#2B4543] hidden sm:inline">|</span>
+          <span className="inline-flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-[#CFF4A7]" />
+            Ground Soil &amp; Weather Sensors
+          </span>
+          <span className="text-[#2B4543] hidden sm:inline">|</span>
+          <span className="inline-flex items-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-[#CFF4A7]" />
+            Audit-Ready Farmer Export Dossiers
+          </span>
+        </div>
+
+        {/* Action Controls with High-Contrast Primary Button */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4"
         >
+          {/* High-Contrast Standout CTA */}
           <Button
-            id="hero-request-demo-cta"
+            id="hero-start-cultivating-cta"
             type="button"
-            variant="default"
             size="lg"
             onClick={onRequestDemo}
-            className="rounded-full shadow-md hover:shadow-lg font-bold text-sm gap-2"
+            className="rounded-full bg-[#CFF4A7] text-[#11201D] hover:bg-[#bde892] font-bold text-sm sm:text-base px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all cursor-pointer"
           >
-            <span>Request Portfolio Pilot</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <span>Start Verification Demo</span>
+            <ArrowUpRight className="w-5 h-5 text-[#11201D]" />
           </Button>
 
+          {/* Secondary Action: Jump to Live Compliance Dashboard */}
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full text-xs font-mono uppercase tracking-wider bg-[#152522]/80 border-[#2B4543] hover:border-[#CFF4A7]/40 text-[#D6E3DE] gap-2"
+            className="rounded-full text-xs font-mono uppercase tracking-wider bg-[#152522]/80 border-[#2B4543] hover:border-[#CFF4A7]/60 text-[#D6E3DE] hover:text-white px-6 py-6 gap-2 cursor-pointer"
           >
-            <a href="#how-it-works">
-              <span>Operational Cycle</span>
-              <ArrowDown className="w-3.5 h-3.5" />
+            <a href="#compliance-dashboard">
+              <span>View Compliance Ledger</span>
+              <ArrowDown className="w-3.5 h-3.5 text-[#CFF4A7]" />
             </a>
           </Button>
         </motion.div>
@@ -113,3 +119,4 @@ export const Hero: React.FC<HeroProps> = ({ onRequestDemo }) => {
     </section>
   );
 };
+export default Hero;

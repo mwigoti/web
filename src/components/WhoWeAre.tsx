@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Compass, Eye, Satellite } from 'lucide-react';
+import { Mail, Linkedin, Satellite, Quote } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { Badge } from '@/src/components/ui/badge';
 import { Card } from '@/src/components/ui/card';
@@ -9,30 +9,30 @@ export const WhoWeAre: React.FC = () => {
     {
       name: 'Brian Gillo',
       role: 'Co-Founder · Project Lead',
-      bio: 'Product developer and software engineer with a background in human-centered research, working at the intersection of artificial intelligence, climate research, and Earth observation. Brian is a climate researcher focused on applying AI to environmental monitoring, climate resilience, and inclusive decision-making across African contexts. He has completed Nanosatellite CubeSat training in Malindi, delivered in collaboration with the Italian Space Agency (ASI) and the Kenya Space Agency (KSA).',
-      email: 'gillobrian750@gmail.com',
-      linkedin: 'https://www.linkedin.com/company/terrasatlive/',
+      bio: 'Product developer and systems engineer working at the convergence of artificial intelligence, climate intelligence, and satellite Earth observation. Brian leads platform strategy and user-centered design, dedicated to applying advanced machine learning and satellite pipelines to environmental monitoring, early action protocols, and inclusive decision-making across Africa.',
+      email: 'briangillo.co@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/brian-gillo-571a4822a/',
     },
     {
       name: 'Henry Mwoha',
       role: 'Co-Founder · CTO',
-      bio: 'Geospatial engineer and remote sensing specialist working at the intersection of Earth observation, artificial intelligence, and spatial decision support systems. Henry leads the design and implementation of TerraSat’s geospatial intelligence platforms — integrating remote sensing, GIS, and spatial data infrastructure. He has contributed to an AI spaceborne project collaboration between the Kenya Space Agency (KSA) and STAR.VISION.',
-      email: 'mwoha@students.uonbi.ac.ke',
-      linkedin: '',
+      bio: 'Geospatial engineer and technology strategist specializing in human-centered design, technical project management, space technology, and tech entrepreneurship. Henry leads TerraSat’s technical execution and product development, turning satellite Earth observation and user research into intuitive, scalable digital platforms that solve critical ground-level challenges.',
+      email: 'henrymwoha02@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/henry-mwoha/',
     },
     {
       name: 'Vivian Muchire',
       role: 'Co-Founder · COO',
-      bio: 'Software engineering professional specializing in building high-performance, user-friendly applications that simplify complex workflows, with technical expertise spanning Python (Django), Go, and Flutter. As COO, she bridges technical execution and operational delivery, translating space-data solutions into accessible tools. She holds a BSc in Software Engineering from the University of Eastern Africa, Baraton.',
+      bio: 'Software engineer and operations leader operating at the vital intersection of operational management and software engineering. Vivian leads cross-functional workflows, product deployment, and institutional partnerships, ensuring TerraSat’s software architecture and field operations run with precision, resilience, and reliability across Africa.',
       email: 'vivianmuchire@gmail.com',
-      linkedin: 'https://linkedin.com/in/vivian-muchire',
+      linkedin: 'https://www.linkedin.com/in/vivian-muchire/',
     },
     {
       name: 'Salome Wanjiru',
       role: 'Co-Founder · CMO',
-      bio: 'Geospatial Engineer specializing in spatial intelligence for environmental monitoring and disaster resilience. Salome transforms spaceborne data into decision-ready insights that strengthen climate risk awareness. She has collaborated in international geospatial spaces such as Geopalooza, serves as Vice Chair of the Women in Engineering Student Summit (WIESS), and is an active member of the Red Cross.',
-      email: 'sallywain@students.uonbi.ac.ke',
-      linkedin: '',
+      bio: 'Geospatial engineer and data-driven governance advocate specializing in spatial intelligence, environmental monitoring, and youth civic engagement. Salome excels at transforming complex satellite Earth observation datasets into clear, decision-ready intelligence and leading community engagement initiatives that strengthen climate risk awareness across Africa.',
+      email: 'salome.terrasat@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/salome-wanjiru-498252320/',
     },
   ];
 
@@ -57,34 +57,37 @@ export const WhoWeAre: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Mission & Vision Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        {/* Mission & Vision: Shortened in One Sentence with Big Speechmarks */}
+        <div className="mb-20">
           <Reveal>
-            <Card className="p-8 rounded-3xl bg-[#162A27] border-[#2B4543] text-white relative overflow-hidden h-full">
-              <span className="inline-block text-xs font-mono font-bold text-[#CFF4A7] uppercase tracking-wider mb-4">
-                Pillar 01 · Purpose
-              </span>
-              <h3 className="text-xl font-bold text-white mb-3">
-                Our Mission
-              </h3>
-              <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
-                To turn Earth observation and IoT data into practical, community-ready action — giving households, cooperatives, and institutions across Africa the risk intelligence they need before disaster strikes, not after.
-              </p>
-            </Card>
-          </Reveal>
+            <div className="relative rounded-3xl bg-[#162A27] border border-[#2B4543] p-8 sm:p-12 md:p-14 overflow-hidden shadow-2xl">
+              {/* Giant background speechmark watermark */}
+              <div
+                aria-hidden="true"
+                className="absolute -top-6 -left-2 sm:left-4 text-[#CFF4A7]/10 font-serif text-[120px] sm:text-[160px] md:text-[200px] leading-none select-none pointer-events-none"
+              >
+                “
+              </div>
 
-          <Reveal delay={0.1}>
-            <Card className="p-8 rounded-3xl bg-[#162A27] border-[#2B4543] text-white relative overflow-hidden h-full">
-              <span className="inline-block text-xs font-mono font-bold text-[#CFF4A7] uppercase tracking-wider mb-4">
-                Pillar 02 · Horizon
-              </span>
-              <h3 className="text-xl font-bold text-white mb-3">
-                Our Vision
-              </h3>
-              <p className="text-sm sm:text-base text-[#D6E3DE] leading-relaxed">
-                A future where every flood-prone community and every farm has access to verifiable, satellite-powered intelligence — starting in Kenya and Rwanda, and built to scale across the continent.
-              </p>
-            </Card>
+              <div className="relative z-10 max-w-4xl mx-auto text-center">
+                {/* Pill Eyebrow */}
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <Badge variant="default" className="text-xs font-semibold font-mono uppercase tracking-wider py-1 px-3 bg-[#11201D] text-[#CFF4A7] border border-[#2B4543] shadow-sm">
+                    <Quote className="w-3.5 h-3.5 text-[#CFF4A7]" />
+                    <span>Mission &amp; Vision</span>
+                  </Badge>
+                </div>
+
+                {/* Shortened single sentence in big quotation speechmarks */}
+                <blockquote className="relative my-2 sm:my-4">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug sm:leading-relaxed">
+                    <span className="text-[#CFF4A7] text-4xl sm:text-5xl md:text-6xl font-serif font-black align-top mr-1">“</span>
+                    To turn satellite Earth observation and ground intelligence into community-ready action — powering sustainable livelihoods, food systems, and a thriving, climate-resilient economy across Africa.
+                    <span className="text-[#CFF4A7] text-4xl sm:text-5xl md:text-6xl font-serif font-black align-bottom ml-1">”</span>
+                  </p>
+                </blockquote>
+              </div>
+            </div>
           </Reveal>
         </div>
 
@@ -98,19 +101,19 @@ export const WhoWeAre: React.FC = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {teamMembers.map((member, idx) => (
             <Reveal key={member.name} delay={idx * 0.1}>
-              <Card className="p-8 rounded-3xl bg-[#162926] border-[#2B4543] text-white flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-all shadow-md h-full">
+              <Card className="p-6 sm:p-8 rounded-3xl bg-[#152724] border-2 border-[#2B4543] text-white flex flex-col justify-between hover:border-[#CFF4A7]/60 transition-all duration-300 shadow-lg hover:shadow-2xl h-full">
                 <div>
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div>
-                      <h4 className="text-xl font-bold text-white">{member.name}</h4>
-                      <div className="text-xs font-mono text-[#CFF4A7] font-semibold mt-0.5">
+                      <h4 className="text-xl font-bold text-white tracking-tight">{member.name}</h4>
+                      <div className="text-xs font-mono text-[#CFF4A7] font-semibold mt-1">
                         {member.role}
                       </div>
                     </div>
-                    <div className="w-9 h-9 rounded-full bg-[#1A312D] border border-[#2B4543] flex items-center justify-center text-[#CFF4A7]">
+                    <div className="w-10 h-10 rounded-xl bg-[#1A312D] border border-[#375855] flex items-center justify-center text-[#CFF4A7] shrink-0 shadow-xs">
                       <Satellite className="w-4 h-4" />
                     </div>
                   </div>
@@ -123,9 +126,9 @@ export const WhoWeAre: React.FC = () => {
                   {member.email && (
                     <a
                       href={`mailto:${member.email}`}
-                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#CFF4A7] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#CFF4A7] transition-colors break-all"
                     >
-                      <Mail className="w-3.5 h-3.5 text-[#CFF4A7]" />
+                      <Mail className="w-3.5 h-3.5 text-[#CFF4A7] shrink-0" />
                       <span>{member.email}</span>
                     </a>
                   )}
@@ -134,7 +137,7 @@ export const WhoWeAre: React.FC = () => {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#38BDF8] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-[#D6E3DE] hover:text-[#38BDF8] transition-colors shrink-0"
                     >
                       <Linkedin className="w-3.5 h-3.5 text-[#38BDF8]" />
                       <span>LinkedIn</span>
@@ -145,6 +148,38 @@ export const WhoWeAre: React.FC = () => {
             </Reveal>
           ))}
         </div>
+
+        {/* Brand & Identity Disambiguation Note (Targeting phonetic variants: Terraxat & Terrasat) */}
+        <Reveal delay={0.25} className="mt-12">
+          <div className="bg-[#152522] border-2 border-[#2B4543] rounded-2xl p-6 sm:p-7 text-white shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#253E3D] pb-4 mb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-[#CFF4A7]/20 border border-[#CFF4A7] flex items-center justify-center text-[#CFF4A7] font-mono text-xs font-bold">
+                  TX
+                </div>
+                <h3 className="text-base font-bold text-white font-headline">
+                  Brand &amp; Entity Identity: Terraxat &amp; Terrasat Impact
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#CFF4A7] bg-[#1D3130] px-3 py-1 rounded-full border border-[#2B4543] shrink-0">
+                Official Domain: terraxat.com
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-[#D6E3DE] leading-relaxed mb-3">
+              Our registered enterprise brand and primary domain is <strong className="text-white">Terraxat</strong> (
+              <a href="https://terraxat.com" className="text-[#CFF4A7] underline font-semibold">
+                terraxat.com
+              </a>
+              ). Because our mission blends <em>Terra</em> (Earth observation) and <em>Satellite</em> telemetry for economic impact, partners, 
+              international buyers, and media frequently reference us as <strong className="text-white">Terrasat</strong>, <strong className="text-white">Terrasat Impact</strong>, or <strong className="text-white">Terra Sat</strong>.
+            </p>
+            <div className="text-xs font-mono text-[#A4B8B2] flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 border-t border-[#253E3D]">
+              <span><span className="text-[#CFF4A7]">Canonical Entity:</span> Terraxat Impact Co. Ltd.</span>
+              <span><span className="text-[#CFF4A7]">Phonetic Variants:</span> Terrasat · Terrasat Impact · Terra Sat</span>
+              <span><span className="text-[#CFF4A7]">HQ:</span> Nairobi, Kenya</span>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

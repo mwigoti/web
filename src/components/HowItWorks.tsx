@@ -47,13 +47,13 @@ export const HowItWorks: React.FC = () => {
         </Reveal>
 
         {/* 4-Step Minimalist Grid with Staggered Reveal */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {steps.map((step, idx) => {
             return (
               <Reveal
                 key={step.num}
                 delay={idx * 0.1}
-                className="border border-[#D5DDD7] p-6 sm:p-7 rounded-2xl flex flex-col justify-between hover:border-[#1D3130]/50 hover:shadow-md transition-all bg-[#FAFBF8]"
+                className="border-2 border-[#CBD5E1] p-6 sm:p-7 rounded-2xl flex flex-col justify-between hover:border-[#1A532E]/60 hover:shadow-lg transition-all duration-200 bg-white"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

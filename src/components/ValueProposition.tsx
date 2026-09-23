@@ -55,18 +55,18 @@ export const ValueProposition: React.FC = () => {
           </h2>
 
           {/* The Operational Flow Callout (Horizontal sequence) */}
-          <Card className="bg-[#152522] border-[#2B4543] p-6 sm:p-8 rounded-xl mb-10 overflow-x-auto text-white">
-            <p className="text-xs font-mono uppercase text-[#A4B8B2] tracking-wider mb-4">
+          <Card className="bg-[#152522] border-2 border-[#2B4543] p-5 sm:p-7 rounded-2xl mb-10 overflow-x-auto text-white shadow-lg">
+            <p className="text-xs font-mono uppercase text-[#A4B8B2] tracking-wider mb-3">
               Operational Closed Loop:
             </p>
-            <div className="flex items-center gap-3 text-sm sm:text-base font-semibold text-white whitespace-nowrap">
+            <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold text-white whitespace-nowrap min-w-max pb-1">
               {sequence.map((item, index) => (
                 <React.Fragment key={item}>
                   <Badge
                     variant={index === sequence.length - 1 ? 'default' : 'outline'}
                     className={`px-3 py-1.5 rounded-lg border text-xs sm:text-sm font-semibold ${
                       index === sequence.length - 1
-                        ? 'bg-[#CFF4A7] text-[#1D3130] border-[#CFF4A7] font-bold'
+                        ? 'bg-[#CFF4A7] text-[#1D3130] border-[#CFF4A7] font-bold shadow-xs'
                         : index === 0
                         ? 'bg-[#1D3130] text-white border-[#2B4543]'
                         : 'bg-[#1D3130]/80 text-[#E7EFE5] border-[#2B4543]'
@@ -75,7 +75,7 @@ export const ValueProposition: React.FC = () => {
                     {item}
                   </Badge>
                   {index < sequence.length - 1 && (
-                    <ArrowRight className="w-4 h-4 text-[#CFF4A7] shrink-0 opacity-70" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#CFF4A7] shrink-0 opacity-70" />
                   )}
                 </React.Fragment>
               ))}

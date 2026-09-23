@@ -57,25 +57,27 @@ export const DataSources: React.FC = () => {
         </div>
 
         {/* 4-Column Technical Data Source Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mt-8">
           {sources.map((src) => {
             const Icon = src.icon;
             return (
               <Card
                 key={src.name}
-                className="p-5 rounded-xl bg-[#1D3130] border-[#2B4543] flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white"
+                className="p-5 sm:p-6 rounded-2xl bg-[#1D3130] border-2 border-[#2B4543] flex flex-col justify-between hover:border-[#CFF4A7]/60 shadow-md hover:shadow-xl transition-all duration-200 text-white"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <Badge variant="outline" className="text-[10px] font-mono uppercase text-[#A4B8B2] border-[#2B4543] bg-[#162A27] px-2 py-0.5">
+                    <Badge variant="outline" className="text-[10px] font-mono uppercase text-[#A4B8B2] border-[#2B4543] bg-[#162A27] px-2.5 py-1 rounded-md">
                       {src.category}
                     </Badge>
-                    <Icon className="w-4 h-4 text-[#CFF4A7]" />
+                    <div className="w-8 h-8 rounded-lg bg-[#162A27] border border-[#2B4543] flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-[#CFF4A7]" />
+                    </div>
                   </div>
                   <h4 className="text-base font-bold text-white mb-2 leading-snug">
                     {src.name}
                   </h4>
-                  <div className="text-xs font-mono text-[#CFF4A7]/80 mb-3 leading-tight">
+                  <div className="text-xs font-mono text-[#CFF4A7]/90 mb-3 leading-tight bg-[#162924] p-2 rounded-lg border border-[#253E3D]">
                     {src.spec}
                   </div>
                   <p className="text-xs text-[#D6E3DE] leading-relaxed">
@@ -87,7 +89,7 @@ export const DataSources: React.FC = () => {
                   <span className="text-[10px] font-mono uppercase text-[#A4B8B2]">
                     Status
                   </span>
-                  <Badge variant="outline" className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#4C8B5C] border-[#4C8B5C]/30 bg-[#162924] px-2 py-0.5">
+                  <Badge variant="outline" className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#4C8B5C] border-[#4C8B5C]/30 bg-[#162924] px-2 py-0.5 rounded-md">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4C8B5C]" />
                     Active Pipeline
                   </Badge>

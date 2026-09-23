@@ -55,16 +55,16 @@ export const ProblemSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 2x2 Clean Structural Grid (No Icon Circles, Restrained Tabular Figures) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {/* 2x2 Clean Structural Grid with Defined Boundaries */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {gaps.map((gap) => (
             <Card
               key={gap.num}
-              className="bg-white border-[#E3E7DF] p-8 rounded-2xl shadow-xs flex flex-col justify-between transition-all hover:border-[#1D3130]/30"
+              className="bg-white border-2 border-[#CBD5E1] p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between hover:border-[#1D3130]/60"
             >
               <div>
                 <div className="flex items-baseline justify-between border-b border-[#F0F2EB] pb-4 mb-5">
-                  <Badge variant="secondary" className="font-headline text-xs font-bold tabular-nums text-[#1D3130] bg-[#EEF2EA] border-[#D8DFD5]">
+                  <Badge variant="secondary" className="font-headline text-xs font-bold tabular-nums text-[#1D3130] bg-[#EEF2EA] border-[#D8DFD5] px-2.5 py-1 rounded-md">
                     GAP {gap.num}
                   </Badge>
                   <span className="text-xs text-[#475B55] tracking-wide uppercase font-medium">
@@ -74,13 +74,13 @@ export const ProblemSection: React.FC = () => {
                 <h3 className="text-xl font-bold text-[#1D3130] mb-3 leading-snug">
                   {gap.title}
                 </h3>
-                <p className="text-base text-[#16211F]/85 leading-relaxed mb-6 font-normal">
+                <p className="text-sm sm:text-base text-[#16211F]/85 leading-relaxed mb-6 font-normal">
                   {gap.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#F0F2EB] flex items-start gap-2">
-                <span className="text-xs font-semibold text-[#1D3130] shrink-0 uppercase tracking-wider mt-0.5">
+              <div className="pt-4 border-t border-[#F0F2EB] flex items-start gap-2 bg-[#F8FAF6] p-3 rounded-xl border border-[#E8ECE4]">
+                <span className="text-xs font-bold text-[#1D3130] shrink-0 uppercase tracking-wider mt-0.5">
                   Result:
                 </span>
                 <span className="text-xs font-medium text-[#475B55]">
@@ -92,13 +92,13 @@ export const ProblemSection: React.FC = () => {
         </div>
 
         {/* Supporting Context Callout Strip */}
-        <Card className="mt-12 bg-white border-[#E3E7DF] p-6 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-xs">
+        <Card className="mt-10 sm:mt-12 bg-white border-2 border-[#CBD5E1] p-6 rounded-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-[#F7F8F3] border border-[#E3E7DF] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#F7F8F3] border border-[#D8DFD5] flex items-center justify-center shrink-0 shadow-2xs">
               <span className="font-headline font-bold text-sm text-[#1D3130]">VS</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-[#1D3130]">
+              <p className="text-sm font-bold text-[#1D3130]">
                 The Traditional Model: Uniform, Blind Inspection
               </p>
               <p className="text-xs text-[#475B55] mt-0.5">
@@ -106,7 +106,7 @@ export const ProblemSection: React.FC = () => {
               </p>
             </div>
           </div>
-          <Badge variant="default" className="text-xs font-medium text-[#1D3130] bg-[#CFF4A7] hover:bg-[#CFF4A7] px-4 py-2 rounded-lg border border-[#BDE891] shrink-0">
+          <Badge variant="default" className="text-xs font-semibold text-[#1D3130] bg-[#CFF4A7] hover:bg-[#bce68f] px-4 py-2.5 rounded-xl border border-[#BDE891] shrink-0 shadow-2xs">
             TerraFarm solution: Target ground agents exclusively where deviations are flagged.
           </Badge>
         </Card>

@@ -61,19 +61,19 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
               <div className="flex flex-wrap gap-3 pt-4 border-t border-[#253E3D]">
                 <Badge variant="outline" className="text-xs font-mono py-1 px-3 bg-[#162926] border-[#2B4543] text-[#E7EFE5] gap-2">
                   <MapPin className="w-3.5 h-3.5 text-[#CFF4A7]" />
-                  <span>Nairobi, Kenya &amp; Kigali, Rwanda</span>
+                  <span>Nairobi, Kenya</span>
                 </Badge>
                 <Badge variant="outline" className="text-xs font-mono py-1 px-3 bg-[#162926] border-[#2B4543] text-[#E7EFE5] gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#CFF4A7]" />
-                  <a href="mailto:hello@terraxat.com" className="hover:text-[#CFF4A7] transition-colors">
-                    hello@terraxat.com
+                  <a href="mailto:terrasat.impact@gmail.com" className="hover:text-[#CFF4A7] transition-colors">
+                    terrasat.impact@gmail.com
                   </a>
                 </Badge>
               </div>
             </Reveal>
 
-            {/* Right Column: Inquiry Form */}
-            <Reveal delay={0.15} className="lg:col-span-6 bg-[#162A27] border border-[#2B4543] p-6 sm:p-8 rounded-3xl shadow-xl">
+            {/* Right Column: Inquiry Form Card with Clear Distinguishable Boundaries */}
+            <Reveal delay={0.15} className="lg:col-span-6 bg-[#152724] border-2 border-[#2B4543] p-6 sm:p-8 md:p-9 rounded-3xl shadow-2xl">
               {formSubmitted ? (
                 <div className="py-8 text-center">
                   <div className="w-12 h-12 rounded-full bg-[#CFF4A7]/20 border border-[#CFF4A7] flex items-center justify-center mx-auto mb-3 text-[#CFF4A7]">
@@ -114,7 +114,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                       id="solution-select"
                       value={formData.solution}
                       onChange={(e) => setFormData({ ...formData, solution: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#11201D] border border-[#2B4543] text-sm text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                      className="w-full px-3.5 py-3 rounded-xl bg-[#0F1E1B] border border-[#2F4F4B] text-sm text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                     >
                       <option value="Terra Farm (Agricultural MRV)">Terra Farm · Agricultural MRV &amp; EUDR Compliance</option>
                       <option value="NEWIS (Flood Early Warning)">NEWIS · Flood Early Warning &amp; Safe Routing</option>
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="David Mwangi"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#11201D] border border-[#2B4543] text-sm text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                        className="w-full px-3.5 py-3 rounded-xl bg-[#0F1E1B] border border-[#2F4F4B] text-sm text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                       />
                     </div>
                     <div>
@@ -148,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                         placeholder="Organization / Union"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#11201D] border border-[#2B4543] text-sm text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                        className="w-full px-3.5 py-3 rounded-xl bg-[#0F1E1B] border border-[#2F4F4B] text-sm text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                       />
                     </div>
                   </div>
@@ -164,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="david@organization.org"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#11201D] border border-[#2B4543] text-sm text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                      className="w-full px-3.5 py-3 rounded-xl bg-[#0F1E1B] border border-[#2F4F4B] text-sm text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                     />
                   </div>
 
@@ -173,7 +173,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                       type="submit"
                       variant="default"
                       size="lg"
-                      className="w-full rounded-full font-headline font-bold text-sm shadow-md hover:shadow-lg gap-2"
+                      className="w-full py-3.5 rounded-full font-headline font-bold text-sm shadow-md hover:shadow-lg gap-2 cursor-pointer transition-all"
                     >
                       <span>Submit Inquiry</span>
                       <Send className="w-4 h-4" />
@@ -200,10 +200,10 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                 <Logo size={28} wordmarkColor="white" productSubtitle="Impact Co. · Climate Intelligence" />
               </button>
               <p className="text-sm text-[#D6E3DE] leading-relaxed max-w-sm mb-4">
-                Cultivating Africa's future, using space technology. Turning satellite observations and ground truth into early warning and smallholder protection.
+                Cultivating Africa's future using space technology. Terraxat (operating as Terrasat Impact) transforms satellite Earth observation and ground truth into continuous MRV and early warning.
               </p>
               <div className="flex flex-col gap-1 text-xs font-mono text-[#A4B8B2]">
-                <span>Headquarters: Nairobi, Kenya &nbsp;·&nbsp; Kigali, Rwanda</span>
+                <span>Headquarters: Nairobi, Kenya</span>
                 <span className="text-[#CFF4A7]">ACT in Space Kenya 2026 Winner</span>
               </div>
             </div>
@@ -334,15 +334,15 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                 <li>
                   <button
                     type="button"
-                    onClick={() => handleNav('home', '#partners')}
+                    onClick={() => handleNav('home', '#hero-partners-carousel')}
                     className="hover:text-[#CFF4A7] transition-colors cursor-pointer text-left"
                   >
                     Partners &amp; Alliances
                   </button>
                 </li>
                 <li>
-                  <a href="mailto:hello@terraxat.com" className="hover:text-[#CFF4A7] transition-colors">
-                    hello@terraxat.com
+                  <a href="mailto:terrasat.impact@gmail.com" className="hover:text-[#CFF4A7] transition-colors">
+                    terrasat.impact@gmail.com
                   </a>
                 </li>
                 {onRequestDemo && (
@@ -366,9 +366,10 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
       {/* Bottom Bar */}
       <div className="py-6 border-t border-[#1C332F] bg-[#0A1412]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A4B8B2]">
-          <p>© {new Date().getFullYear()} TerraSat Impact Co. Limited. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Terraxat Impact Co. Ltd. (operating as Terrasat Impact). All rights reserved.</p>
           <div className="flex items-center gap-6 font-mono text-[11px]">
-            <span className="text-[#A4B8B2]">Nairobi &amp; Kigali</span>
+            <a href="https://terraxat.com" className="text-[#CFF4A7] hover:underline">terraxat.com</a>
+            <span className="text-[#A4B8B2]">Nairobi, Kenya</span>
             <span className="text-[#CFF4A7]">Space Technology for Resilience</span>
           </div>
         </div>

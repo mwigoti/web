@@ -34,7 +34,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-xl bg-[#1D3130] border-[#2B4543] p-6 sm:p-8 text-white">
+      <DialogContent className="max-w-xl w-[95vw] sm:w-full max-h-[92vh] overflow-y-auto overscroll-contain bg-[#162724] border-2 border-[#2B4543] p-5 sm:p-8 text-white rounded-3xl shadow-2xl">
         {submitted ? (
           <div className="py-6 text-center">
             <div className="w-14 h-14 rounded-full bg-[#CFF4A7]/20 border border-[#CFF4A7] flex items-center justify-center mx-auto mb-4 text-[#CFF4A7]">
@@ -69,10 +69,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   TerraSat Impact · Technical Walkthrough
                 </Badge>
               </div>
-              <DialogTitle className="text-2xl sm:text-3xl font-extrabold text-white font-headline">
+              <DialogTitle className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white font-headline">
                 Request a Demo or Partnership
               </DialogTitle>
-              <DialogDescription className="text-sm text-[#D6E3DE]">
+              <DialogDescription className="text-xs sm:text-sm text-[#D6E3DE]">
                 Connect with our geospatial, agronomy, and early-warning team in Nairobi.
               </DialogDescription>
             </DialogHeader>
@@ -87,7 +87,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   id="modal-solution"
                   value={formData.solution}
                   onChange={(e) => setFormData({ ...formData, solution: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                  className="w-full px-3.5 py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                 >
                   <option value="Terra Farm (Agricultural MRV & EUDR)">Terra Farm · Agricultural MRV &amp; EUDR Compliance</option>
                   <option value="NEWIS (Flood Early Warning & Routing)">NEWIS · Flood Early Warning &amp; Safe-Space Routing</option>
@@ -95,7 +95,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                 <div>
                   <label htmlFor="modal-name" className="block text-xs font-mono uppercase text-[#D6E3DE] mb-1.5 font-medium">
                     Your Name <span className="text-[#CFF4A7]">*</span>
@@ -107,7 +107,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Grace Wanjiku"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   />
                 </div>
                 <div>
@@ -121,12 +121,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="e.g. Rift Valley Agribusiness Ltd"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                 <div>
                   <label htmlFor="modal-email" className="block text-xs font-mono uppercase text-[#D6E3DE] mb-1.5 font-medium">
                     Work Email <span className="text-[#CFF4A7]">*</span>
@@ -138,7 +138,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="g.wanjiku@riftagri.com"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   />
                 </div>
                 <div>
@@ -149,7 +149,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     id="modal-role"
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   >
                     <option value="Exporter / Aggregator">Exporter / Aggregator</option>
                     <option value="Cooperative Union">Cooperative Union</option>
@@ -162,7 +162,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                 <div>
                   <label htmlFor="modal-location" className="block text-xs font-mono uppercase text-[#D6E3DE] mb-1.5 font-medium">
                     Location / Target Ward or Acreage
@@ -173,7 +173,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                     placeholder="e.g. Nyeri / Mathare / 2,500 ha"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white placeholder-[#A4B8B2] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white placeholder-[#759087] focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   />
                 </div>
                 <div>
@@ -184,7 +184,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     id="modal-priority"
                     value={formData.priority}
                     onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#152522] border border-[#2B4543] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
+                    className="w-full px-3.5 py-2.5 sm:py-3 text-sm bg-[#0F1E1B] border border-[#2F4F4B] rounded-xl text-white focus:outline-none focus:border-[#CFF4A7] focus:ring-1 focus:ring-[#CFF4A7]"
                   >
                     <option value="EUDR Deforestation Compliance">EUDR Deforestation Compliance</option>
                     <option value="Flood Early Warning Deployment">Flood Early Warning Deployment</option>
@@ -201,7 +201,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   type="submit"
                   variant="default"
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl text-sm"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold shadow-md cursor-pointer transition-all"
                 >
                   <span>Confirm Walkthrough Request</span>
                   <Send className="w-4 h-4" />

@@ -51,9 +51,11 @@ export const Logo: React.FC<LogoProps> = ({
           >
             TerraSat
           </span>
-          <span className="text-[10px] tracking-wider uppercase font-mono font-medium text-[#CFF4A7]/90 mt-0.5">
-            {productSubtitle}
-          </span>
+          {productSubtitle && (
+            <span className="text-[10px] tracking-wider uppercase font-mono font-medium text-[#CFF4A7]/90 mt-0.5">
+              {productSubtitle}
+            </span>
+          )}
         </div>
       )}
     </div>

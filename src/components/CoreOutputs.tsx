@@ -262,7 +262,7 @@ export const CoreOutputs: React.FC = () => {
         </div>
 
         {/* Structured Specification Data Table (No Generic Icon Grids) */}
-        <div className="border border-[#E3E7DF] rounded-sm overflow-hidden bg-white shadow-none">
+        <div className="border-2 border-[#CBD5E1] rounded-2xl overflow-hidden bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>

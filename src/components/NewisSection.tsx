@@ -152,14 +152,14 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {/* Step 1: WARN */}
             <Reveal className="h-full">
-              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+              <Card className="h-full p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#CBD5E1] text-[#12201D] flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#1A532E]/60 transition-all duration-200">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 01</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
                       WARN
                     </span>
                   </div>
@@ -176,11 +176,11 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
 
             {/* Step 2: GUIDE */}
             <Reveal delay={0.1} className="h-full">
-              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+              <Card className="h-full p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#CBD5E1] text-[#12201D] flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#1A532E]/60 transition-all duration-200">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 02</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
                       GUIDE
                     </span>
                   </div>
@@ -197,11 +197,11 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
 
             {/* Step 3: ACT */}
             <Reveal delay={0.2} className="h-full">
-              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+              <Card className="h-full p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#CBD5E1] text-[#12201D] flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#1A532E]/60 transition-all duration-200">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 03</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
                       ACT
                     </span>
                   </div>
@@ -218,11 +218,11 @@ export const NewisSection: React.FC<NewisSectionProps> = ({ onRequestDemo }) => 
 
             {/* Step 4: PROTECT */}
             <Reveal delay={0.3} className="h-full">
-              <Card className="h-full p-6 rounded-2xl bg-white border-[#D8DFD5] text-[#12201D] flex flex-col justify-between shadow-xs hover:border-[#1A532E]/40 transition-all">
+              <Card className="h-full p-6 sm:p-7 rounded-2xl bg-white border-2 border-[#CBD5E1] text-[#12201D] flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#1A532E]/60 transition-all duration-200">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono text-[#1A532E] font-bold tracking-wider">STAGE 04</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#EAF5EC] border border-[#BCDDC3] text-[#1A532E]">
                       PROTECT
                     </span>
                   </div>

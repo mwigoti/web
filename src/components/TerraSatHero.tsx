@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
-import africaMapImg from '../assets/images/africa_relief_map_1789035229990.jpg';
+import africaExactMapImg from '../assets/images/africa_exact_map.jpg';
 
 interface TerraSatHeroProps {
   onRequestDemo: () => void;
@@ -18,21 +18,21 @@ export const TerraSatHero: React.FC<TerraSatHeroProps> = ({
       id="top"
       className="relative min-h-[92vh] sm:min-h-screen pt-32 pb-24 sm:pt-40 sm:pb-32 lg:pt-44 lg:pb-36 bg-[#F7F9F5] text-[#11201D] border-b border-[#D8DFD5] overflow-hidden flex flex-col items-center justify-center"
     >
-      {/* High-Contrast Embossed Africa Relief Map Backdrop */}
+      {/* Exact Vector Africa Continent Map with Crisp National Boundaries */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-0">
         <img
-          src={africaMapImg}
-          alt=""
+          src={africaExactMapImg}
+          alt="Map of Africa with national borders"
           aria-hidden="true"
           referrerPolicy="no-referrer"
-          className="w-[860px] sm:w-[1100px] lg:w-[1380px] xl:w-[1550px] max-w-none h-auto object-contain opacity-85 sm:opacity-95 mix-blend-multiply select-none filter contrast-135 brightness-95 saturate-110"
+          className="w-[680px] sm:w-[860px] lg:w-[1040px] xl:w-[1150px] max-w-none h-auto object-contain opacity-35 sm:opacity-45 mix-blend-multiply select-none"
         />
-        {/* Contrast Shield: Generous radial luminance gradient that guarantees pristine WCAG AAA legibility for the headline and text, completely preventing color clashing with dark topography */}
+        {/* Contrast Shield: Soft luminance gradient guaranteeing sharp WCAG text legibility */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 960px 620px at 50% 48%, rgba(247, 249, 245, 0.96) 0%, rgba(247, 249, 245, 0.88) 36%, rgba(247, 249, 245, 0.28) 72%, transparent 100%)',
+              'radial-gradient(ellipse 960px 620px at 50% 50%, rgba(247, 249, 245, 0.94) 0%, rgba(247, 249, 245, 0.78) 46%, rgba(247, 249, 245, 0.2) 75%, transparent 100%)',
           }}
         />
         {/* Edge gradient blending */}
@@ -62,7 +62,7 @@ export const TerraSatHero: React.FC<TerraSatHeroProps> = ({
             transition={{ duration: 0.55, delay: 0.16 }}
             className="text-lg sm:text-xl md:text-2xl sm:leading-relaxed text-[#475B55] mb-12 font-normal max-w-3xl text-center"
           >
-            TerraSat Impact turns satellite Earth observation and local ground truth into verifiable action — from rapid flood warnings reaching informal settlements via feature phones, to farm-level audit dossiers keeping East African coffee and tea exports compliant.
+            TerraSat Impact turns satellite Earth observation and local ground truth into verifiable action — powering community early warnings, sustainable land and agricultural verification, and scalable climate intelligence across Africa.
           </motion.p>
 
           {/* Primary Action Buttons: Generously sized */}

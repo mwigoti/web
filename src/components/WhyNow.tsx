@@ -25,13 +25,13 @@ export const WhyNow: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Cited Sourced Statistics with Exact Attributions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 3 Cited Sourced Statistics with Exact Attributions & Defined Boundaries */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {/* Stat 1: Continental Agribusiness Footprint */}
-          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
+          <Card className="bg-[#152522] border-2 border-[#2B4543] p-6 sm:p-8 rounded-3xl flex flex-col justify-between hover:border-[#CFF4A7]/60 shadow-lg hover:shadow-xl transition-all duration-200 text-white">
             <div>
               <div className="mb-4">
-                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B] px-2.5 py-1 rounded-md">
                   Economic Scale
                 </Badge>
               </div>
@@ -55,10 +55,10 @@ export const WhyNow: React.FC = () => {
           </Card>
 
           {/* Stat 2: Kenya Horticultural Trade Volume */}
-          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
+          <Card className="bg-[#152522] border-2 border-[#2B4543] p-6 sm:p-8 rounded-3xl flex flex-col justify-between hover:border-[#CFF4A7]/60 shadow-lg hover:shadow-xl transition-all duration-200 text-white">
             <div>
               <div className="mb-4">
-                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B] px-2.5 py-1 rounded-md">
                   Kenyan Horticultural Exports (2024)
                 </Badge>
               </div>
@@ -82,10 +82,10 @@ export const WhyNow: React.FC = () => {
           </Card>
 
           {/* Stat 3: EUDR Regulatory Enforcement Deadline */}
-          <Card className="bg-[#152522] border-[#2B4543] p-8 rounded-2xl flex flex-col justify-between hover:border-[#CFF4A7]/40 transition-colors text-white">
+          <Card className="bg-[#152522] border-2 border-[#2B4543] p-6 sm:p-8 rounded-3xl flex flex-col justify-between hover:border-[#CFF4A7]/60 shadow-lg hover:shadow-xl transition-all duration-200 text-white">
             <div>
               <div className="mb-4">
-                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B]">
+                <Badge variant="outline" className="text-xs font-mono uppercase tracking-wider text-[#A4B8B2] border-[#2B4543] bg-[#192E2B] px-2.5 py-1 rounded-md">
                   Regulatory Enforcement
                 </Badge>
               </div>
@@ -110,7 +110,7 @@ export const WhyNow: React.FC = () => {
         </div>
 
         {/* Regulatory takeaway footnote */}
-        <Card className="mt-10 p-5 rounded-xl bg-[#152522]/80 border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white">
+        <Card className="mt-10 p-5 sm:p-6 rounded-2xl bg-[#152522]/90 border-2 border-[#2B4543] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white shadow-md">
           <p className="text-xs sm:text-sm text-[#D6E3DE]">
             <span className="text-[#CFF4A7] font-semibold">The consequence of inaction:</span> Exporters without plot-level geolocation and continuous vegetative evidence face immediate border rejection once regulatory cutoffs take effect.
           </p>

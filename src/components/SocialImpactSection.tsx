@@ -51,11 +51,11 @@ export const SocialImpactSection: React.FC = () => {
         </div>
 
         {/* 4 Key Social Impact Metrics (Editorial Style) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-16">
           {impactMetrics.map((item) => (
             <Card
               key={item.label}
-              className="bg-[#1D3130] border-[#2B4543] p-6 rounded-xl flex flex-col justify-between text-white"
+              className="bg-[#1D3130] border-2 border-[#2B4543] hover:border-[#CFF4A7]/50 p-6 rounded-2xl flex flex-col justify-between text-white shadow-md hover:shadow-xl transition-all duration-200"
             >
               <div>
                 <span className="font-headline text-3xl sm:text-4xl font-bold tabular-nums text-[#CFF4A7] block mb-2">
@@ -73,16 +73,16 @@ export const SocialImpactSection: React.FC = () => {
         </div>
 
         {/* Interactive Impact Dimensions */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Column: 3 Pillar Selectors */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
             <button
               type="button"
               onClick={() => setActiveStory('inclusion')}
-              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-2xl border-2 transition-all cursor-pointer ${
                 activeStory === 'inclusion'
-                  ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
-                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
+                  ? 'bg-[#1D3130] border-[#CFF4A7] shadow-lg ring-1 ring-[#CFF4A7]/50'
+                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/40'
               }`}
             >
               <div className="flex items-center gap-3 mb-2">
@@ -99,10 +99,10 @@ export const SocialImpactSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveStory('resilience')}
-              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-2xl border-2 transition-all cursor-pointer ${
                 activeStory === 'resilience'
-                  ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
-                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
+                  ? 'bg-[#1D3130] border-[#CFF4A7] shadow-lg ring-1 ring-[#CFF4A7]/50'
+                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/40'
               }`}
             >
               <div className="flex items-center gap-3 mb-2">
@@ -119,10 +119,10 @@ export const SocialImpactSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveStory('forests')}
-              className={`text-left p-6 rounded-xl border transition-all cursor-pointer ${
+              className={`text-left p-6 rounded-2xl border-2 transition-all cursor-pointer ${
                 activeStory === 'forests'
-                  ? 'bg-[#1D3130] border-[#CFF4A7] ring-1 ring-[#CFF4A7]/50'
-                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/30'
+                  ? 'bg-[#1D3130] border-[#CFF4A7] shadow-lg ring-1 ring-[#CFF4A7]/50'
+                  : 'bg-[#152522] border-[#2B4543] hover:border-[#CFF4A7]/40'
               }`}
             >
               <div className="flex items-center gap-3 mb-2">
@@ -138,7 +138,7 @@ export const SocialImpactSection: React.FC = () => {
           </div>
 
           {/* Right Column: Case Story Card with Authentic Photo */}
-          <Card className="lg:col-span-7 bg-[#1D3130] border-[#2B4543] rounded-xl overflow-hidden flex flex-col justify-between text-white p-0">
+          <Card className="lg:col-span-7 bg-[#1D3130] border-2 border-[#2B4543] rounded-2xl overflow-hidden flex flex-col justify-between text-white p-0 shadow-xl">
             {activeStory === 'inclusion' && (
               <div>
                 <div className="relative h-64 sm:h-72 overflow-hidden">

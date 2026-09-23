@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Canonical Sitemaps for Terraxat / Terrasat Impact
+Sitemap: https://terraxat.com/sitemap.xml

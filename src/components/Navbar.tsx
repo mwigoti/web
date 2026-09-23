@@ -26,15 +26,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
     { label: 'Solutions', href: '#solutions' },
     { label: 'Focus Areas', href: '#focus-areas' },
     { label: 'Who We Are', href: '#about' },
-    { label: 'Partners', href: '#partners' },
+    { label: 'Partners', href: '#hero-partners-carousel' },
     { label: 'Contact', href: '#contact' },
   ];
 
   const terraFarmLinks = [
+    { label: 'Compliance Ledger', href: '#compliance-dashboard' },
     { label: 'Smallholder Impact', href: '#impact' },
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Deliverables', href: '#deliverables' },
-    { label: '3D Audit Ledger', href: '#audit-ledger-3d' },
   ];
 
   const newisLinks = [
@@ -75,27 +75,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNav
           className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFF4A7] rounded-sm cursor-pointer text-left"
           aria-label="TerraSat Impact Home"
         >
-          <Logo size={32} wordmarkColor="white" productSubtitle={currentSubtitle} />
+          <Logo size={32} wordmarkColor="white" productSubtitle="" />
         </button>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6" aria-label="Main Navigation">
-          {activeView !== 'home' && (
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                onNavigate('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="gap-1.5 rounded-full bg-[#162A27] border-[#2B4543] text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] hover:bg-[#1C332F] cursor-pointer mr-2 h-8"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              <span>TerraSat Overview</span>
-            </Button>
-          )}
-
           {currentLinks.map((link) => (
             <a
               key={link.href}
