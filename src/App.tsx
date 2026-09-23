@@ -18,55 +18,47 @@ import { DemoModal } from './components/DemoModal';
 import { SectionTransition } from './components/SectionTransition';
 import { FarmHealthDashboard } from './components/FarmHealthDashboard';
 import { MobileFieldBar } from './components/MobileFieldBar';
-
-type AppView = 'home' | 'terrafarm' | 'newis';
+import { AppView, getInitialView, updateRoute } from './lib/routeCookies';
+import { updateDocumentSeo } from './lib/seo';
 
 export default function App() {
-  const [activeView, setActiveView] = useState<AppView>(() => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash.toLowerCase();
-      if (hash.includes('terra-farm') || hash.includes('terrafarm')) return 'terrafarm';
-      if (hash.includes('newis')) return 'newis';
-    }
-    return 'home';
-  });
-
+  const [activeView, setActiveView] = useState<AppView>(() => getInitialView());
   const [demoModalOpen, setDemoModalOpen] = useState(false);
 
+  // Synchronize SEO document title, meta descriptions, and canonical tags whenever activeView changes
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.toLowerCase();
-      if (hash.includes('terra-farm') || hash.includes('terrafarm')) {
-        setActiveView('terrafarm');
-      } else if (hash.includes('newis')) {
-        setActiveView('newis');
-      } else if (
-        hash === '' ||
-        hash === '#top' ||
-        hash === '#solutions' ||
-        hash === '#about' ||
-        hash === '#partners' ||
-        hash === '#focus-areas' ||
-        hash === '#contact'
-      ) {
-        setActiveView('home');
-      }
+    updateDocumentSeo(activeView);
+  }, [activeView]);
+
+  useEffect(() => {
+    const handleUrlSync = () => {
+      const current = getInitialView();
+      setActiveView(current);
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleUrlSync);
+    window.addEventListener('popstate', handleUrlSync);
+    return () => {
+      window.removeEventListener('hashchange', handleUrlSync);
+      window.removeEventListener('popstate', handleUrlSync);
+    };
   }, []);
 
-  const navigateTo = (view: AppView) => {
+  const navigateTo = (view: AppView, anchor?: string) => {
     setActiveView(view);
-    if (view === 'home') {
-      window.history.pushState(null, '', '#top');
-    } else if (view === 'terrafarm') {
-      window.history.pushState(null, '', '#terra-farm');
-    } else if (view === 'newis') {
-      window.history.pushState(null, '', '#newis');
+    updateRoute(view, anchor);
+    if (anchor) {
+      setTimeout(() => {
+        const el = document.querySelector(anchor.startsWith('#') ? anchor : `#${anchor}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOpenDemo = () => setDemoModalOpen(true);

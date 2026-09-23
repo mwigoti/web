@@ -7,7 +7,7 @@ import { Badge } from '@/src/components/ui/badge';
 interface NavbarProps {
   onRequestDemo: () => void;
   activeView: 'home' | 'terrafarm' | 'newis';
-  onNavigate: (view: 'home' | 'terrafarm' | 'newis') => void;
+  onNavigate: (view: 'home' | 'terrafarm' | 'newis', anchor?: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onRequestDemo, activeView, onNavigate }) => {

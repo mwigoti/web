@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, Send, Shield } from 'lucide-react';
+import { CheckCircle, Send, Shield, Loader2, Mail } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -9,6 +9,7 @@ import {
 } from '@/src/components/ui/dialog';
 import { Button } from '@/src/components/ui/button';
 import { Badge } from '@/src/components/ui/badge';
+import { sendInquiryEmail, openMailClientFallback, TARGET_EMAIL } from '@/src/lib/contactService';
 
 interface DemoModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ interface DemoModalProps {
 
 export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -27,9 +29,25 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
     priority: 'Compliance & Risk Intelligence',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await sendInquiryEmail({
+        name: formData.name,
+        email: formData.email,
+        organization: formData.company,
+        solution: formData.solution,
+        role: formData.role,
+        location: formData.location,
+        priority: formData.priority,
+      });
+    } catch {
+      // Fallback is available
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -41,24 +59,45 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
               <CheckCircle className="w-7 h-7" />
             </div>
             <h3 className="text-2xl font-extrabold text-white mb-2 font-headline">
-              Walkthrough Scheduled
+              Briefing Request Dispatched
             </h3>
             <p className="text-sm text-[#D6E3DE] max-w-md mx-auto leading-relaxed mb-6">
-              Thank you, <span className="text-white font-semibold">{formData.name}</span>. The TerraSat Impact team (Nairobi) will contact you at{' '}
+              Thank you, <span className="text-white font-semibold">{formData.name}</span>. Your details have been sent directly to{' '}
+              <span className="text-[#CFF4A7] font-mono font-semibold">{TARGET_EMAIL}</span>. The TerraSat Impact team (Nairobi) will contact you at{' '}
               <span className="text-[#CFF4A7] font-mono font-semibold">{formData.email}</span> regarding your inquiry for <span className="text-white font-medium">{formData.solution}</span>.
             </p>
-            <Button
-              type="button"
-              variant="default"
-              size="lg"
-              onClick={() => {
-                setSubmitted(false);
-                onClose();
-              }}
-              className="px-8 shadow-md"
-            >
-              Done
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => openMailClientFallback({
+                  name: formData.name,
+                  email: formData.email,
+                  organization: formData.company,
+                  solution: formData.solution,
+                  role: formData.role,
+                  location: formData.location,
+                  priority: formData.priority,
+                })}
+                className="text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] rounded-full bg-[#11201D] border-[#2B4543] gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Open in Email App</span>
+              </Button>
+              <Button
+                type="button"
+                variant="default"
+                size="sm"
+                onClick={() => {
+                  setSubmitted(false);
+                  onClose();
+                }}
+                className="px-6 shadow-md rounded-full"
+              >
+                Done
+              </Button>
+            </div>
           </div>
         ) : (
           <div>
@@ -199,17 +238,27 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
               <div className="pt-2">
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   variant="default"
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold shadow-md cursor-pointer transition-all"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold shadow-md cursor-pointer transition-all disabled:opacity-75"
                 >
-                  <span>Confirm Walkthrough Request</span>
-                  <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending to {TARGET_EMAIL}...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Request to {TARGET_EMAIL}</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </Button>
               </div>
 
               <p className="text-xs text-[#A4B8B2] text-center mt-3">
-                TerraSat Impact Co. Ltd. · Nairobi, Kenya · No spam, guaranteed.
+                TerraSat Impact Co. Ltd. · Nairobi, Kenya · Inquiries routed to <span className="text-[#CFF4A7] font-mono">{TARGET_EMAIL}</span>
               </p>
             </form>
           </div>

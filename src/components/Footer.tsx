@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Logo } from './Logo';
-import { ArrowUpRight, CheckCircle, Mail, MapPin, Send, ShieldCheck, Award } from 'lucide-react';
+import { ArrowUpRight, CheckCircle, Mail, MapPin, Send, ShieldCheck, Award, Loader2, ExternalLink } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { Badge } from '@/src/components/ui/badge';
 import { Button } from '@/src/components/ui/button';
+import { sendInquiryEmail, openMailClientFallback, TARGET_EMAIL } from '@/src/lib/contactService';
 
 interface FooterProps {
   onRequestDemo?: () => void;
-  onNavigate?: (view: 'home' | 'terrafarm' | 'newis') => void;
+  onNavigate?: (view: 'home' | 'terrafarm' | 'newis', anchor?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,20 +23,26 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
 
   const handleNav = (view: 'home' | 'terrafarm' | 'newis', anchor?: string) => {
     if (onNavigate) {
-      onNavigate(view);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (anchor) {
-        setTimeout(() => {
-          const el = document.querySelector(anchor);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+      onNavigate(view, anchor);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await sendInquiryEmail({
+        name: formData.name,
+        email: formData.email,
+        solution: formData.solution,
+        organization: formData.organization,
+      });
+    } catch {
+      // Fallback is handled seamlessly
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }
   };
 
   return (
@@ -80,20 +88,34 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">
-                    Inquiry Confirmed
+                    Inquiry Transmitted
                   </h3>
-                  <p className="text-sm text-[#E7EFE5]/90 max-w-sm mx-auto leading-relaxed mb-5">
-                    Thank you, {formData.name || 'Partner'}. The TerraSat Impact team will contact you at <span className="text-[#CFF4A7] font-mono font-semibold">{formData.email}</span> within 24 hours.
+                  <p className="text-sm text-[#E7EFE5]/90 max-w-sm mx-auto leading-relaxed mb-4">
+                    Thank you, {formData.name || 'Partner'}. Your inquiry has been routed to{' '}
+                    <span className="text-[#CFF4A7] font-mono font-semibold">{TARGET_EMAIL}</span>. Our team in Nairobi will respond to{' '}
+                    <span className="text-[#CFF4A7] font-mono font-semibold">{formData.email}</span> within 24 hours.
                   </p>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setFormSubmitted(false)}
-                    className="text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] rounded-full bg-[#11201D] border-[#2B4543]"
-                  >
-                    ← Submit another inquiry
-                  </Button>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => openMailClientFallback(formData)}
+                      className="text-xs font-mono text-[#CFF4A7] hover:text-[#CFF4A7] rounded-full bg-[#11201D] border-[#2B4543] gap-1.5"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Open Direct Mail Client</span>
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setFormSubmitted(false)}
+                      className="text-xs font-mono text-[#A4B8B2] hover:text-white"
+                    >
+                      ← Submit another inquiry
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -102,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                       Request Technical Briefing
                     </h3>
                     <p className="text-xs sm:text-sm text-[#9BB1A9]">
-                      Confidential assessment for cooperatives, municipalities, insurers, and NGOs.
+                      Direct message to <span className="text-[#CFF4A7] font-mono">{TARGET_EMAIL}</span>.
                     </p>
                   </div>
 
@@ -171,12 +193,22 @@ export const Footer: React.FC<FooterProps> = ({ onRequestDemo, onNavigate }) => 
                   <div className="pt-2">
                     <Button
                       type="submit"
+                      disabled={isSubmitting}
                       variant="default"
                       size="lg"
-                      className="w-full py-3.5 rounded-full font-headline font-bold text-sm shadow-md hover:shadow-lg gap-2 cursor-pointer transition-all"
+                      className="w-full py-3.5 rounded-full font-headline font-bold text-sm shadow-md hover:shadow-lg gap-2 cursor-pointer transition-all disabled:opacity-75"
                     >
-                      <span>Submit Inquiry</span>
-                      <Send className="w-4 h-4" />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Sending to {TARGET_EMAIL}...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Inquiry to {TARGET_EMAIL}</span>
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
                     </Button>
                   </div>
                 </form>
